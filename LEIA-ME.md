@@ -7,17 +7,22 @@ Duplo clique já abre. Deploy: joga a pasta inteira em qualquer host estático.
 
 ## 1. As 9 fotos — é isso que falta para o site parar de parecer vazio
 
-> **JÁ INSTALADAS.** As 9 fotos estão em `img/casos/` e no ar.
+> **JÁ INSTALADAS.** As 9 fotos estão em `img/casos/` e no ar, em cartões **quadrados**.
 >
-> **Regra inegociável:** cada arquivo é uma composição antes/depois lado a lado.
-> **Nunca corte na horizontal** — a lateral é a borda dos dois rostos, e cortá-la
-> destrói a comparação, que é a única razão da foto existir. As marcas d'água foram
-> removidas **só por corte vertical** (cabelo e ombro), com `_recorta.py`.
+> **Por que não é 3:4 como a referência.** Os cartões do site de referência são 3:4
+> preenchidos porque as imagens de lá já foram compostas nesse formato. As da Thainan
+> são 1:1 e 4:5, e cada uma é um antes/depois **lado a lado**. Preencher um 3:4 exige
+> retirar largura — que é justamente onde ficam as bordas dos dois rostos. Testado e
+> reprovado: custava de 8 a 12% de cada lateral e mutilava a comparação.
 >
-> Por isso os cartões do carrossel têm **altura fixa e largura natural** (`--alt` em
-> `.carrossel`), e não proporção fixa: a tira alinha pela altura, as larguras variam
-> conforme cada foto, e nenhuma imagem perde um pixel na horizontal. Se for repor
-> alguma foto, basta que ela chegue sem marca d'água — a proporção não importa.
+> **Regra:** corte só na vertical (cabelo, ombro), nunca na horizontal.
+>
+> Como funciona hoje: moldura 1:1. Como as 6 fotos 4:5 são mais altas que largas, o
+> `cover` num quadro quadrado sobra na vertical — o `data-corte` manda essa sobra para
+> a ponta onde está a marca d'água. Zero perda lateral nessas seis. As três de origem
+> quadrada não têm sobra vertical: `caso-01` não tinha marca, e `caso-02` e `caso-08`
+> tiveram a marca cortada no arquivo (topo + laterais para seguirem quadradas),
+> por isso estão com `data-corte="nenhum"` e não devem ser recortadas de novo.
 
 ### Jeito rápido (recomendado)
 Jogue as 9 fotos numa pasta qualquer — nomes não importam, só a **ordem alfabética**
