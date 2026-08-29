@@ -7,11 +7,17 @@ Duplo clique já abre. Deploy: joga a pasta inteira em qualquer host estático.
 
 ## 1. As 9 fotos — é isso que falta para o site parar de parecer vazio
 
-> **JÁ INSTALADAS.** As 9 fotos estão em `img/casos/` e no ar, todas recortadas em
-> **3:4** (mesmo formato da referência) com a marca d'água removida **no próprio arquivo**.
-> Por isso não existe mais `data-corte` nem `data-zoom` no HTML — o CSS não precisa
-> mais deslocar o enquadramento. Se for repor alguma foto, ela precisa vir já em 3:4
-> e sem marca, ou o recorte terá de ser refeito com `_recorta.py`.
+> **JÁ INSTALADAS.** As 9 fotos estão em `img/casos/` e no ar.
+>
+> **Regra inegociável:** cada arquivo é uma composição antes/depois lado a lado.
+> **Nunca corte na horizontal** — a lateral é a borda dos dois rostos, e cortá-la
+> destrói a comparação, que é a única razão da foto existir. As marcas d'água foram
+> removidas **só por corte vertical** (cabelo e ombro), com `_recorta.py`.
+>
+> Por isso os cartões do carrossel têm **altura fixa e largura natural** (`--alt` em
+> `.carrossel`), e não proporção fixa: a tira alinha pela altura, as larguras variam
+> conforme cada foto, e nenhuma imagem perde um pixel na horizontal. Se for repor
+> alguma foto, basta que ela chegue sem marca d'água — a proporção não importa.
 
 ### Jeito rápido (recomendado)
 Jogue as 9 fotos numa pasta qualquer — nomes não importam, só a **ordem alfabética**
@@ -57,7 +63,7 @@ fica invisível. A segunda leva é decorativa — `aria-hidden="true"`, fora do 
 - Se trocar a quantidade de fotos, ajuste o `9` do comentário e mantenha a duplicação:
   o cálculo `-50% - vao/2` só fecha se as duas levas forem idênticas.
 
-### Como o corte funciona
+### Como o corte funcionava (histórico)
 As molduras são todas 1:1. Como as fotos têm largura ≤ altura, `object-fit:cover`
 numa moldura quadrada **só corta na vertical** — as laterais ficam intactas, que é
 o que importa num antes/depois lado a lado. O `data-corte` decide para qual ponta

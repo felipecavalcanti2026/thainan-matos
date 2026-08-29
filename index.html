@@ -185,17 +185,23 @@ p:last-child{margin-bottom:0}
    Rolagem contínua por scrollLeft (não por animação CSS), para as
    setas poderem interferir. O trilho carrega os 9 casos duas vezes:
    ao passar da metade, o scroll volta a metade exata e o laço some.
-   Molduras 3:4, mesmo formato da referência. As 9 fotos já vêm
-   recortadas em 3:4 no arquivo, com a marca d'água removida na
-   origem — por isso o CSS não desloca mais o enquadramento.        */
-.carrossel{--vao:clamp(14px,1.6vw,22px);--cartao:clamp(206px,19vw,268px);
+
+   REGRA DA GALERIA: cada foto é uma composição antes/depois lado a
+   lado. Cortar a largura come a borda dos dois rostos e destrói a
+   comparação — que é a única razão da foto existir. Por isso os
+   cartões têm ALTURA FIXA e LARGURA NATURAL: a tira fica alinhada,
+   as larguras variam conforme a proporção de cada foto, e nenhuma
+   imagem perde um pixel na horizontal.
+   As marcas d'água foram removidas no arquivo, sempre por corte
+   vertical (cabelo e ombro), nunca horizontal.                     */
+.carrossel{--vao:clamp(14px,1.6vw,22px);--alt:clamp(300px,31vw,412px);
   position:relative;margin-top:clamp(2.5rem,4.5vw,3.5rem)}
 .carrossel__via{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);
           mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
 .carrossel__via::-webkit-scrollbar{display:none}
 .carrossel__trilho{display:flex;gap:var(--vao);width:max-content;padding-inline:var(--vao)}
-.seta{position:absolute;top:calc(var(--cartao)/1.5);transform:translateY(-50%);z-index:3;
+.seta{position:absolute;top:calc(var(--alt)/2);transform:translateY(-50%);z-index:3;
   width:52px;height:52px;border-radius:50%;border:1px solid var(--linha);
   background:rgba(252,254,245,.92);backdrop-filter:blur(6px);color:var(--tinta);
   display:grid;place-items:center;cursor:pointer;
@@ -204,10 +210,11 @@ p:last-child{margin-bottom:0}
 .seta--ant{left:clamp(8px,2.5vw,34px)}
 .seta--prox{right:clamp(8px,2.5vw,34px)}
 .seta svg{width:17px;height:17px}
-.caso{margin:0;display:flex;flex-direction:column;flex:none;width:var(--cartao)}
-.caso__moldura{position:relative;overflow:hidden;aspect-ratio:3/4;
+.caso{margin:0;display:flex;flex-direction:column;flex:none}
+.caso__moldura{position:relative;overflow:hidden;height:var(--alt);width:max-content;
+  min-width:calc(var(--alt)*.8);
   background:var(--folha) var(--mono) no-repeat center/86px;border-radius:var(--r)}
-.caso__moldura img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;
+.caso__moldura img{height:100%;width:auto;display:block;
   transition:transform 700ms cubic-bezier(.22,.61,.36,1);position:relative;z-index:1}
 .caso__moldura::after{content:attr(data-vazio);position:absolute;left:0;right:0;bottom:14%;
   display:none;justify-content:center;font-size:.64rem;letter-spacing:.13em;
