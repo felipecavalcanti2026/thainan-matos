@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avaliação Facial — Thainan Matos</title>
+<meta name="description" content="Responda 7 perguntas rápidas e a Thainan organiza sua avaliação de harmonização facial.">
+<meta property="og:title" content="Avaliação Facial — Thainan Matos">
+<meta property="og:description" content="Sete perguntas rápidas. Menos de um minuto.">
+<meta property="og:type" content="website">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   QUIZ — mesma identidade visual do site principal.
+   Paleta travada: #fcfef5 #e9ffe1 #cdcfb7 #d6e6c3 #fafbe3
+   Neutros profundos derivados da mesma família verde-musgo.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --porcelana:#fcfef5; --menta:#e9ffe1; --sage:#cdcfb7; --folha:#d6e6c3; --creme:#fafbe3;
+  --tinta:#232719; --corpo:#454d3b; --sutil:#626b55; --profundo:#1b1f14;
+  --linha:rgba(35,39,25,.13);
+  --serif:"Cormorant Garamond",Cormorant,Garamond,Georgia,serif;
+  --sans:"Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --r:2px; --t:280ms cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;
+  background:radial-gradient(120% 70% at 84% 2%,var(--menta) 0%,transparent 58%),
+             radial-gradient(90% 60% at 4% 98%,var(--creme) 0%,transparent 62%),var(--porcelana);
+  color:var(--corpo);font-family:var(--sans);font-size:17px;font-weight:300;line-height:1.68;
+  letter-spacing:.008em;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--serif);color:var(--tinta);font-weight:300;line-height:1.1;
+  letter-spacing:-.012em;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+::selection{background:var(--folha);color:var(--tinta)}
+:focus-visible{outline:2px solid var(--tinta);outline-offset:3px;border-radius:var(--r)}
+
+.topo{padding:1.5rem 1.5rem 0;display:flex;justify-content:center}
+.marca{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:var(--tinta)}
+.marca__mono{width:38px;height:38px;flex:none}
+.marca__nome{font-family:var(--serif);font-size:.98rem;letter-spacing:.2em;
+  text-transform:uppercase;line-height:1.15;text-indent:.2em}
+.marca__sub{display:block;font-family:var(--sans);font-size:.54rem;letter-spacing:.28em;
+  color:var(--sutil);margin-top:3px;text-align:center;text-indent:.28em}
+
+.palco{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem 1.5rem 3rem}
+.cartao{width:min(660px,100%);text-align:center}
+
+/* ── barra de progresso ── */
+.barra{width:min(420px,100%);margin:0 auto 2.4rem;display:none}
+.barra.ver{display:block}
+.barra__trilho{height:2px;background:var(--sage);border-radius:2px;overflow:hidden}
+.barra__cheio{height:100%;width:0;background:var(--tinta);transition:width 420ms cubic-bezier(.22,.61,.36,1)}
+.barra__conta{margin-top:.75rem;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sutil)}
+
+.rotulo{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sutil);
+  margin-bottom:1.1rem}
+.retrato{width:132px;height:132px;border-radius:50%;overflow:hidden;margin:0 auto 1.6rem;
+  background:var(--folha);border:1px solid var(--linha)}
+.retrato img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+h1{font-size:clamp(1.9rem,4.4vw,3rem)}
+h2{font-size:clamp(1.55rem,3.4vw,2.35rem)}
+.alt{display:block;color:var(--sutil)}
+.sub{margin-top:1.1rem;font-size:clamp(1rem,1.5vw,1.1rem);color:var(--corpo);
+  max-width:46ch;margin-inline:auto}
+.dica{margin-top:1.2rem;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sutil)}
+
+.btn{--bg:var(--tinta);--fg:var(--porcelana);
+  display:inline-flex;align-items:center;justify-content:center;gap:.7rem;
+  min-height:56px;padding:0 2.4rem;background:var(--bg);color:var(--fg);
+  font-family:var(--sans);font-size:.78rem;font-weight:400;letter-spacing:.2em;
+  text-transform:uppercase;text-decoration:none;border:1px solid var(--bg);
+  border-radius:var(--r);cursor:pointer;transition:background var(--t)}
+.btn:hover{--bg:var(--profundo)}
+.btn svg{width:16px;height:16px;flex:none}
+.btn--zap{--bg:#25d366;--fg:#fff;border-color:#25d366}
+.btn--zap:hover{--bg:#1eb457;border-color:#1eb457}
+
+/* ── opções ── */
+.opcoes{display:grid;gap:.7rem;margin-top:2.2rem;text-align:left}
+.opcao{display:flex;align-items:center;gap:1rem;width:100%;
+  padding:1.15rem 1.4rem;background:rgba(252,254,245,.72);border:1px solid var(--linha);
+  border-radius:var(--r);cursor:pointer;font-family:var(--serif);
+  font-size:clamp(1.08rem,1.8vw,1.24rem);line-height:1.3;color:var(--tinta);text-align:left;
+  transition:background var(--t),border-color var(--t),transform var(--t)}
+.opcao:hover{background:var(--menta);border-color:var(--folha)}
+.opcao.sel{background:var(--folha);border-color:var(--tinta)}
+.opcao__marca{width:20px;height:20px;flex:none;border:1px solid var(--sage);border-radius:50%;
+  display:grid;place-items:center;transition:border-color var(--t),background var(--t)}
+.opcao.sel .opcao__marca{background:var(--tinta);border-color:var(--tinta)}
+.opcao__marca::after{content:"";width:7px;height:7px;border-radius:50%;background:transparent;transition:background var(--t)}
+.opcao.sel .opcao__marca::after{background:var(--porcelana)}
+
+.voltar{margin-top:1.8rem;background:none;border:0;cursor:pointer;color:var(--sutil);
+  font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:.6rem;display:none;transition:color var(--t)}
+.voltar.ver{display:inline-block}
+.voltar:hover{color:var(--tinta)}
+
+/* ── resumo final ── */
+.resumo{margin:2rem auto 0;max-width:440px;text-align:left;
+  border-top:1px solid var(--linha)}
+.resumo div{display:flex;justify-content:space-between;gap:1.2rem;align-items:baseline;
+  padding:.8rem 0;border-bottom:1px solid var(--linha);font-size:.86rem}
+.resumo dt{color:var(--sutil);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;flex:none}
+.resumo dd{margin:0;color:var(--tinta);text-align:right;font-family:var(--serif);font-size:1.02rem}
+
+.rodape{padding:0 1.5rem 2rem;text-align:center;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--sutil)}
+.rodape a{text-decoration:none;border-bottom:1px solid var(--sage);padding-bottom:2px}
+
+.tela{display:none}
+.tela.ativa{display:block;animation:entra 420ms cubic-bezier(.22,.61,.36,1)}
+@keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+@media (max-width:560px){
+  body{font-size:16px}
+  .palco{padding:1.5rem 1.2rem 2.5rem}
+  .btn{width:100%}
+  .retrato{width:104px;height:104px}
+  .resumo dd{font-size:.95rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <a class="marca" href="index.html" aria-label="Thainan Matos — voltar ao site">
+    <svg class="marca__mono" viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="currentColor" text-anchor="middle" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-weight="400">
+        <text x="100" y="150" font-size="142" letter-spacing="-3">M</text>
+        <text x="100" y="150" font-size="168">T</text>
+      </g>
+    </svg>
+    <span class="marca__nome">Thainan Matos<span class="marca__sub">Harmonização Facial</span></span>
+  </a>
+</header>
+
+<main class="palco">
+  <div class="cartao">
+
+    <div class="barra" id="barra">
+      <div class="barra__trilho"><div class="barra__cheio" id="barraCheio"></div></div>
+      <p class="barra__conta" id="barraConta">Pergunta 1 de 7</p>
+    </div>
+
+    <!-- ── abertura ── -->
+    <section class="tela ativa" id="telaInicio">
+      <div class="retrato"><img src="img/retrato-hero.jpg" alt="Thainan Matos"></div>
+      <p class="rotulo">Código da Juventude · Avaliação</p>
+      <h1><span class="alt">Antes de tocar no rosto,</span>eu preciso lê-lo.</h1>
+      <p class="sub">Sete perguntas rápidas para eu entender o que está acontecendo com o seu rosto antes da gente conversar.</p>
+      <div style="margin-top:2.2rem">
+        <button class="btn" id="btnComecar" type="button">Começar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="dica">Leva menos de um minuto</p>
+    </section>
+
+    <!-- ── perguntas (montadas pelo script) ── -->
+    <section class="tela" id="telaPergunta" aria-live="polite">
+      <h2 id="enunciado"></h2>
+      <div class="opcoes" id="opcoes"></div>
+      <button class="voltar" id="btnVoltar" type="button">← Voltar</button>
+    </section>
+
+    <!-- ── fecho ── -->
+    <section class="tela" id="telaFim">
+      <p class="rotulo">Tudo certo</p>
+      <h2><span class="alt">Já sei por onde</span>começar a sua leitura.</h2>
+      <p class="sub">Suas respostas vão junto na mensagem. Assim eu chego na conversa já sabendo o que olhar — e você não precisa repetir nada.</p>
+      <dl class="resumo" id="resumo"></dl>
+      <div style="margin-top:2.2rem">
+        <a class="btn btn--zap" id="btnZap" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2a.5.5 0 0 0 0-.4c0-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.4a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1A4.9 4.9 0 0 0 8.3 15a11 11 0 0 0 4.2 3.3 4.7 4.7 0 0 0 2.9.4 2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.2-.2-.3-.4-.4Z"/></svg>
+          Enviar para a Thainan
+        </a>
+      </div>
+      <button class="voltar ver" id="btnRefazer" type="button">← Refazer</button>
+    </section>
+
+  </div>
+</main>
+
+<footer class="rodape"><a href="index.html">Voltar ao site</a></footer>
+
+<script>
+(function(){
+  var ZAP = '5573981046695';
+
+  /* Sete perguntas calibradas no método dela: primeiro a queixa, depois a
+     sensação, o histórico e o medo — e só no fim praça e urgência, que são
+     os dois dados operacionais de quem vai atender.                        */
+  var PERGUNTAS = [
+    { chave:'Queixa', texto:'O que mais te incomoda quando você se olha de perfil?', ops:[
+      'O contorno do rosto, que perdeu definição',
+      'A bochecha e o terço médio, que parecem ter escorregado',
+      'O queixo e o lábio — sinto que o perfil não fecha',
+      'A pele: textura, viço, linhas finas',
+      'Não sei apontar. Só sei que mudou' ]},
+    { chave:'Sensação', texto:'Se tivesse que descrever seu rosto hoje em uma frase, qual seria?', ops:[
+      'Parece cansado mesmo quando eu durmo bem',
+      'Ficou mais pesado na parte de baixo',
+      'Continua bonito, mas perdeu definição',
+      'Está envelhecendo mais rápido do que eu' ]},
+    { chave:'Histórico', texto:'Você já fez algum procedimento facial?', ops:[
+      'Nunca fiz nada',
+      'Já fiz toxina botulínica',
+      'Já fiz preenchimento',
+      'Já fiz vários e quero reorganizar' ]},
+    { chave:'Receio', texto:'O que mais te segura na hora de decidir?', ops:[
+      'Ficar com o rosto artificial',
+      'Não me reconhecer depois',
+      'Exagerar sem perceber',
+      'Investir e não ver diferença',
+      'Nada me segura, só quero começar certo' ]},
+    { chave:'Idade', texto:'Qual a sua faixa de idade?', ops:[
+      'Até 29 anos','30 a 39 anos','40 a 49 anos','50 anos ou mais' ]},
+    { chave:'Praça', texto:'Onde você prefere ser atendida?', ops:[
+      'Itabuna — BA','São Paulo — SP','Tanto faz, me oriente' ]},
+    { chave:'Prazo', texto:'Quando você gostaria de começar?', ops:[
+      'O quanto antes','Nos próximos 30 dias','Ainda estou me informando' ]}
+  ];
+
+  var i = 0, respostas = [];
+  var telas = {inicio:byId('telaInicio'), pergunta:byId('telaPergunta'), fim:byId('telaFim')};
+  var lento = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function byId(x){return document.getElementById(x)}
+
+  function mostrar(nome){
+    for(var k in telas) telas[k].classList.toggle('ativa', k===nome);
+    byId('barra').classList.toggle('ver', nome==='pergunta');
+    window.scrollTo({top:0,behavior:lento?'auto':'smooth'});
+  }
+
+  function pinta(){
+    var p = PERGUNTAS[i];
+    byId('enunciado').textContent = p.texto;
+    byId('barraCheio').style.width = ((i+1)/PERGUNTAS.length*100).toFixed(1)+'%';
+    byId('barraConta').textContent = 'Pergunta '+(i+1)+' de '+PERGUNTAS.length;
+    byId('btnVoltar').classList.toggle('ver', i>0);
+
+    var caixa = byId('opcoes'); caixa.innerHTML='';
+    p.ops.forEach(function(txt){
+      var b = document.createElement('button');
+      b.type='button'; b.className='opcao';
+      b.innerHTML='<span class="opcao__marca" aria-hidden="true"></span><span>'+txt+'</span>';
+      if(respostas[i]===txt) b.classList.add('sel');
+      b.addEventListener('click', function(){
+        caixa.querySelectorAll('.opcao').forEach(function(o){o.classList.remove('sel')});
+        b.classList.add('sel');
+        respostas[i]=txt;
+        setTimeout(avanca, lento?0:260);   // deixa a seleção ser vista antes de virar
+      });
+      caixa.appendChild(b);
+    });
+  }
+
+  function avanca(){
+    if(i < PERGUNTAS.length-1){ i++; pinta(); }
+    else fecha();
+  }
+
+  function fecha(){
+    var dl = byId('resumo'); dl.innerHTML='';
+    PERGUNTAS.forEach(function(p,n){
+      var d=document.createElement('div');
+      d.innerHTML='<dt>'+p.chave+'</dt><dd>'+(respostas[n]||'—')+'</dd>';
+      dl.appendChild(d);
+    });
+    var linhas = PERGUNTAS.map(function(p,n){ return p.chave+': '+(respostas[n]||'—'); });
+    var msg = 'Olá! Vim do seu site e respondi a avaliação.\n\n'+linhas.join('\n')+
+              '\n\nGostaria de agendar minha avaliação.';
+    byId('btnZap').href='https://wa.me/'+ZAP+'?text='+encodeURIComponent(msg);
+    mostrar('fim');
+  }
+
+  byId('btnComecar').addEventListener('click', function(){ i=0; pinta(); mostrar('pergunta'); });
+  byId('btnVoltar').addEventListener('click', function(){ if(i>0){ i--; pinta(); } });
+  byId('btnRefazer').addEventListener('click', function(){ i=0; respostas=[]; mostrar('inicio'); });
+
+  // se o retrato nao existir, o circulo fica so com a cor da paleta
+  var r=document.querySelector('.retrato img');
+  r.addEventListener('error', function(){ r.remove(); });
+})();
+</script>
+</body>
+</html>
