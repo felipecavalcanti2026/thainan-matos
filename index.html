@@ -127,14 +127,21 @@ p:last-child{margin-bottom:0}
 /* ══ DOBRA 01 — HERO: foto sangrada, texto sobreposto à esquerda ══ */
 .hero{position:relative;min-height:min(90vh,880px);display:flex;align-items:center;
   padding:calc(80px + clamp(2.5rem,5vw,4rem)) 0 clamp(5rem,8vw,7rem);overflow:hidden;isolation:isolate}
+/* Fundo da dobra: o degradê da paleta cobre tudo; o retrato ancora na
+   metade direita e dissolve para a esquerda. A foto é um retrato fechado
+   (3:4, fundo liso) — esticá-la na largura inteira jogaria o rosto atrás
+   do texto, então ela ocupa só a faixa direita e some no degradê.        */
 .hero__fundo{position:absolute;inset:0;z-index:-2;
   background:radial-gradient(120% 90% at 82% 8%,var(--menta) 0%,transparent 60%),
              radial-gradient(90% 80% at 4% 96%,var(--creme) 0%,transparent 64%),var(--porcelana)}
-.hero__fundo img{width:100%;height:100%;object-fit:cover;object-position:72% center}
-/* véu que garante leitura do texto por cima da foto */
+.hero__fundo img{position:absolute;right:0;top:0;height:100%;width:52%;
+  object-fit:cover;object-position:50% 22%;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 26%,#000 100%);
+          mask-image:linear-gradient(90deg,transparent 0%,#000 26%,#000 100%)}
+/* véu leve, só para o texto não encostar na foto */
 .hero__fundo::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(95deg,rgba(252,254,245,.97) 0%,rgba(252,254,245,.94) 32%,
-             rgba(252,254,245,.62) 50%,rgba(252,254,245,.12) 66%,transparent 78%)}
+  background:linear-gradient(95deg,rgba(252,254,245,.92) 0%,rgba(252,254,245,.72) 34%,
+             rgba(252,254,245,.28) 48%,transparent 60%)}
 .hero__fundo.vazio::before{content:attr(data-vazio);position:absolute;right:8%;top:50%;
   transform:translateY(-50%);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--sutil);z-index:1}
@@ -329,8 +336,19 @@ p:last-child{margin-bottom:0}
 @media (max-width:1080px){
   .hero{min-height:0;padding-bottom:clamp(4rem,7vw,6rem)}
   .hero__texto{max-width:100%}
-  .hero__fundo::after{background:linear-gradient(180deg,rgba(252,254,245,.96) 0%,
-    rgba(252,254,245,.9) 46%,rgba(252,254,245,.55) 74%,rgba(252,254,245,.25) 100%)}
+  /* No estreito a foto sai de tras do texto e vira bloco proprio, abaixo
+     dele: retrato de estudio tem que ser visto, nao lavado por um veu.   */
+  .hero{flex-direction:column;align-items:stretch;
+    background:radial-gradient(120% 60% at 82% 4%,var(--menta) 0%,transparent 62%),
+               radial-gradient(90% 50% at 4% 98%,var(--creme) 0%,transparent 66%),var(--porcelana)}
+  .hero>.shell{order:1}
+  .hero__fundo{position:static;order:2;background:none;
+    display:flex;justify-content:center;margin-top:clamp(2rem,6vw,3rem)}
+  .hero__fundo img{position:static;width:min(88%,360px);height:auto;
+    -webkit-mask-image:none;mask-image:none;border-radius:var(--r)}
+  .hero__fundo::after{display:none}
+  .hero__fundo.vazio::before{position:static;transform:none;padding:3rem 0}
+  .hero__curva{display:none}
   .protocolos2{grid-template-columns:1fr}
   .procs{grid-template-columns:repeat(2,1fr)}
   .sobre{grid-template-columns:1fr}
