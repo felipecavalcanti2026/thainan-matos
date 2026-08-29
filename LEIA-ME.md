@@ -7,11 +7,11 @@ Duplo clique já abre. Deploy: joga a pasta inteira em qualquer host estático.
 
 ## 1. As 9 fotos — é isso que falta para o site parar de parecer vazio
 
-> **JÁ INSTALADAS.** As 9 fotos estão em `img/casos/` e no ar. `caso-02` e `caso-08`
-> vieram de originais quadrados e tiveram a marca d'água **cortada no próprio arquivo**
-> (topo + laterais, para continuarem quadrados) — por isso estão com `data-corte="nenhum"`.
-> Não aplique recorte nelas de novo. As outras sete são originais intactos, com o
-> recorte feito no CSS via `data-corte`.
+> **JÁ INSTALADAS.** As 9 fotos estão em `img/casos/` e no ar, todas recortadas em
+> **3:4** (mesmo formato da referência) com a marca d'água removida **no próprio arquivo**.
+> Por isso não existe mais `data-corte` nem `data-zoom` no HTML — o CSS não precisa
+> mais deslocar o enquadramento. Se for repor alguma foto, ela precisa vir já em 3:4
+> e sem marca, ou o recorte terá de ser refeito com `_recorta.py`.
 
 ### Jeito rápido (recomendado)
 Jogue as 9 fotos numa pasta qualquer — nomes não importam, só a **ordem alfabética**

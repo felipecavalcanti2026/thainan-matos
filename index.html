@@ -185,17 +185,17 @@ p:last-child{margin-bottom:0}
    Rolagem contínua por scrollLeft (não por animação CSS), para as
    setas poderem interferir. O trilho carrega os 9 casos duas vezes:
    ao passar da metade, o scroll volta a metade exata e o laço some.
-   As molduras são 1:1 e as fotos têm largura ≤ altura, então "cover"
-   só corta na VERTICAL — as laterais do antes/depois ficam intactas.
-   data-corte manda a sobra para a ponta onde está a marca d'água.   */
-.carrossel{--vao:clamp(14px,1.6vw,22px);--cartao:clamp(232px,23vw,320px);
+   Molduras 3:4, mesmo formato da referência. As 9 fotos já vêm
+   recortadas em 3:4 no arquivo, com a marca d'água removida na
+   origem — por isso o CSS não desloca mais o enquadramento.        */
+.carrossel{--vao:clamp(14px,1.6vw,22px);--cartao:clamp(206px,19vw,268px);
   position:relative;margin-top:clamp(2.5rem,4.5vw,3.5rem)}
 .carrossel__via{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);
           mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
 .carrossel__via::-webkit-scrollbar{display:none}
 .carrossel__trilho{display:flex;gap:var(--vao);width:max-content;padding-inline:var(--vao)}
-.seta{position:absolute;top:calc(var(--cartao)/2);transform:translateY(-50%);z-index:3;
+.seta{position:absolute;top:calc(var(--cartao)/1.5);transform:translateY(-50%);z-index:3;
   width:52px;height:52px;border-radius:50%;border:1px solid var(--linha);
   background:rgba(252,254,245,.92);backdrop-filter:blur(6px);color:var(--tinta);
   display:grid;place-items:center;cursor:pointer;
@@ -205,16 +205,10 @@ p:last-child{margin-bottom:0}
 .seta--prox{right:clamp(8px,2.5vw,34px)}
 .seta svg{width:17px;height:17px}
 .caso{margin:0;display:flex;flex-direction:column;flex:none;width:var(--cartao)}
-.caso__moldura{position:relative;overflow:hidden;aspect-ratio:1;
+.caso__moldura{position:relative;overflow:hidden;aspect-ratio:3/4;
   background:var(--folha) var(--mono) no-repeat center/86px;border-radius:var(--r)}
 .caso__moldura img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;
   transition:transform 700ms cubic-bezier(.22,.61,.36,1);position:relative;z-index:1}
-.caso__moldura[data-corte="topo"]  img{object-position:50% 100%}
-.caso__moldura[data-corte="base"]  img{object-position:50% 0%}
-.caso__moldura[data-corte="ambos"] img{transform:scale(1.05)}
-.caso__moldura[data-zoom="sim"]    img{transform:scale(1.11)}
-.caso__moldura[data-zoom="sim"][data-corte="topo"] img{transform-origin:50% 100%}
-.caso__moldura[data-zoom="sim"][data-corte="base"] img{transform-origin:50% 0%}
 .caso__moldura::after{content:attr(data-vazio);position:absolute;left:0;right:0;bottom:14%;
   display:none;justify-content:center;font-size:.64rem;letter-spacing:.13em;
   text-transform:uppercase;color:var(--sutil);text-align:center;padding:0 1rem}
@@ -516,33 +510,33 @@ p:last-child{margin-bottom:0}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
     <div class="carrossel__via" id="via">
       <div class="carrossel__trilho" id="trilho">
-        <figure class="caso"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-01.jpg">
+        <figure class="caso"><div class="caso__moldura" data-vazio="caso-01.jpg">
           <img src="img/casos/caso-01.jpg" alt="Antes e depois de harmonização facial: perfil com lábios e mento redefinidos" loading="lazy"></div>
           <figcaption><b>Perfil e lábios</b><span>Antes · Depois</span></figcaption></figure>
-        <figure class="caso"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-02.jpg">
+        <figure class="caso"><div class="caso__moldura" data-vazio="caso-02.jpg">
           <img src="img/casos/caso-02.jpg" alt="Antes e depois de harmonização facial: definição do terço inferior" loading="lazy"></div>
           <figcaption><b>Terço inferior</b><span>Antes · Depois</span></figcaption></figure>
-        <figure class="caso"><div class="caso__moldura" data-corte="topo" data-vazio="caso-03.jpg">
+        <figure class="caso"><div class="caso__moldura" data-vazio="caso-03.jpg">
           <img src="img/casos/caso-03.jpg" alt="Antes e depois de harmonização facial: contorno mandibular e projeção de mento" loading="lazy"></div>
-          <figcaption><b>Contorno mandibular</b><span>Antes · Depois</span></figcaption></figure>
-        <figure class="caso"><div class="caso__moldura" data-corte="topo" data-vazio="caso-04.jpg">
+          <figcaption><b>Mandíbula</b><span>Antes · Depois</span></figcaption></figure>
+        <figure class="caso"><div class="caso__moldura" data-vazio="caso-04.jpg">
           <img src="img/casos/caso-04.jpg" alt="Antes e depois de harmonização facial: sustentação do terço médio" loading="lazy"></div>
           <figcaption><b>Terço médio</b><span>Antes · Depois</span></figcaption></figure>
-        <figure class="caso"><div class="caso__moldura" data-corte="base" data-vazio="caso-05.jpg">
+        <figure class="caso"><div class="caso__moldura" data-vazio="caso-05.jpg">
           <img src="img/casos/caso-05.jpg" alt="Antes e depois de harmonização facial: suporte periorbital e leveza do olhar" loading="lazy"></div>
           <figcaption><b>Suporte do olhar</b><span>Antes · Depois</span></figcaption></figure>
-        <figure class="caso"><div class="caso__moldura" data-corte="base" data-vazio="caso-06.jpg">
+        <figure class="caso"><div class="caso__moldura" data-vazio="caso-06.jpg">
           <img src="img/casos/caso-06.jpg" alt="Antes e depois de harmonização facial: perfil alinhado entre nariz, lábios e mento" loading="lazy"></div>
           <figcaption><b>Linha de perfil</b><span>Antes · Depois</span></figcaption></figure>
-        <figure class="caso"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-07.jpg">
+        <figure class="caso"><div class="caso__moldura" data-vazio="caso-07.jpg">
           <img src="img/casos/caso-07.jpg" alt="Antes e depois de harmonização facial: refinamento sutil preservando os traços" loading="lazy"></div>
-          <figcaption><b>Refinamento sutil</b><span>Antes · Depois</span></figcaption></figure>
-        <figure class="caso"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-08.jpg">
+          <figcaption><b>Refinamento</b><span>Antes · Depois</span></figcaption></figure>
+        <figure class="caso"><div class="caso__moldura" data-vazio="caso-08.jpg">
           <img src="img/casos/caso-08.jpg" alt="Antes e depois de harmonização facial: volume labial equilibrado e ângulo definido" loading="lazy"></div>
           <figcaption><b>Lábios e ângulo</b><span>Antes · Depois</span></figcaption></figure>
-        <figure class="caso"><div class="caso__moldura" data-corte="base" data-vazio="caso-09.jpg">
+        <figure class="caso"><div class="caso__moldura" data-vazio="caso-09.jpg">
           <img src="img/casos/caso-09.jpg" alt="Antes e depois de harmonização facial: definição de contorno preservando a expressão" loading="lazy"></div>
-          <figcaption><b>Definição de contorno</b><span>Antes · Depois</span></figcaption></figure>
+          <figcaption><b>Contorno</b><span>Antes · Depois</span></figcaption></figure>
       </div>
     </div>
     <button class="seta seta--prox" id="setaProx" aria-label="Ver próximos casos" type="button">
