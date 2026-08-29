@@ -14,21 +14,23 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════════════════
    THAINAN MATOS — 7 dobras
-   01 Desejo · 02 Dor · 03 Autoridade · 04 Prova
-   05 Valor · 06 Conexão · 07 Conversão
+   DISPOSIÇÃO: hero com texto à esquerda sobre foto sangrada;
+   todas as demais seções centralizadas. Headlines bicolores.
+
    Paleta travada: #fcfef5 #e9ffe1 #cdcfb7 #d6e6c3 #fafbe3
    Os 5 tons têm luminância ~95 e nenhum serve para texto.
-   Neutros profundos derivados da mesma família verde-musgo.
+   A bicolor da headline é TONAL (musgo médio + musgo escuro),
+   porque a paleta não tem cor de destaque com contraste legível.
    ═══════════════════════════════════════════════════════════════ */
 :root{
   --porcelana:#fcfef5; --menta:#e9ffe1; --sage:#cdcfb7; --folha:#d6e6c3; --creme:#fafbe3;
-  --tinta:#232719;      /* títulos     15,9:1 */
-  --corpo:#454d3b;      /* texto        9,2:1 */
-  --sutil:#626b55;      /* legendas     5,0:1 */
+  --tinta:#232719;      /* linha principal da headline  15,9:1 */
+  --corpo:#454d3b;      /* texto corrido                 9,2:1 */
+  --sutil:#626b55;      /* linha de destaque / legendas  5,0:1 */
   --profundo:#1b1f14;
   --linha:rgba(35,39,25,.13);
   --serif:"Cormorant Garamond",Cormorant,Garamond,Georgia,serif;
@@ -41,16 +43,18 @@
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--porcelana);color:var(--corpo);
-  font-family:var(--sans);font-size:17px;font-weight:300;line-height:1.7;
+  font-family:var(--sans);font-size:17px;font-weight:300;line-height:1.72;
   letter-spacing:.008em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
 ::selection{background:var(--folha);color:var(--tinta)}
 
-h1,h2,h3{font-family:var(--serif);color:var(--tinta);font-weight:300;line-height:1.08;letter-spacing:-.012em;margin:0}
-h1{font-size:clamp(2.5rem,5.9vw,4.6rem)}
-h2{font-size:clamp(1.95rem,3.9vw,3.1rem)}
+h1,h2,h3{text-wrap:balance;font-family:var(--serif);color:var(--tinta);font-weight:300;line-height:1.06;letter-spacing:-.012em;margin:0}
+h1{font-size:clamp(2.5rem,5.6vw,4.5rem)}
+h2{font-size:clamp(2rem,4vw,3.35rem)}
 h3{font-size:clamp(1.4rem,2.3vw,1.85rem);line-height:1.18}
+/* bicolor: primeira linha em tom de destaque, segunda em escuro */
+.alt{display:block;color:var(--sutil)}
 p{margin:0 0 1.1em}
 p:last-child{margin-bottom:0}
 
@@ -58,26 +62,34 @@ p:last-child{margin-bottom:0}
 .secao{padding:clamp(4.25rem,7.5vw,6.75rem) 0}
 .secao--creme{background:var(--creme)}
 .secao--menta{background:var(--menta)}
-.secao--folha{background:var(--folha)}
 
-.intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:end}
-.intro--topo{align-items:start}
-.intro--centro{grid-template-columns:1fr;justify-items:center;text-align:center;max-width:62ch;margin-inline:auto}
-.intro__lead{font-size:clamp(1.02rem,1.4vw,1.15rem);color:var(--corpo);line-height:1.68;padding-bottom:.35rem}
+/* ── CABEÇALHO DE SEÇÃO: centralizado, medida estreita ────────── */
+.intro{text-align:center;max-width:64ch;margin:0 auto}
+.intro .rotulo{justify-content:center}
+.intro__lead{font-size:clamp(1.02rem,1.4vw,1.16rem);color:var(--corpo);
+  line-height:1.72;margin-top:1.5rem;max-width:60ch;margin-inline:auto;text-wrap:pretty}
 
 .rotulo{font-size:.71rem;font-weight:400;letter-spacing:.32em;text-transform:uppercase;
   color:var(--sutil);display:flex;align-items:center;gap:.85rem;margin:0 0 1.4rem}
 .rotulo::before{content:"";width:32px;height:1px;background:var(--sage);flex:none}
-.intro--centro .rotulo,.rotulo--centro{justify-content:center}
-.lead{font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.66}
-.fecho-frase{font-family:var(--serif);font-size:clamp(1.35rem,2.5vw,1.95rem);line-height:1.3;color:var(--tinta)}
-.fecho-frase span{display:block;color:var(--sutil);font-style:italic}
+.lead{font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.7}
+
+/* remate: serifada itálica, centralizada */
+.remate{font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.5rem,3vw,2.35rem);line-height:1.24;color:var(--tinta);
+  text-align:center;max-width:26ch;margin:clamp(2.75rem,5vw,4rem) auto 0;text-wrap:balance}
+.remate span{display:block;color:var(--sutil)}
+.apoio-centro{text-align:center;max-width:56ch;margin:clamp(2.25rem,4vw,3rem) auto 0;color:var(--corpo)}
+
+/* botões centralizados no corpo, à esquerda só no hero */
+.acoes{display:flex;justify-content:center;flex-wrap:wrap;gap:.85rem;margin-top:clamp(2.25rem,4vw,3rem)}
+.acoes--esq{justify-content:flex-start}
 
 .btn{--bg:var(--tinta);--fg:var(--porcelana);
   display:inline-flex;align-items:center;justify-content:center;gap:.7rem;
-  min-height:54px;padding:0 2rem;background:var(--bg);
-  font-family:var(--sans);font-size:.77rem;font-weight:400;
-  letter-spacing:.18em;text-transform:uppercase;text-decoration:none;
+  min-height:56px;padding:0 2.3rem;background:var(--bg);
+  font-family:var(--sans);font-size:.78rem;font-weight:400;
+  letter-spacing:.2em;text-transform:uppercase;text-decoration:none;
   border:1px solid var(--bg);border-radius:var(--r);cursor:pointer;white-space:nowrap;
   transition:background var(--t),color var(--t),border-color var(--t)}
 .btn,.nav__links .btn{color:var(--fg)}
@@ -89,22 +101,22 @@ p:last-child{margin-bottom:0}
 .btn svg{width:15px;height:15px;flex:none}
 :focus-visible{outline:2px solid var(--tinta);outline-offset:3px;border-radius:var(--r)}
 
-.nav{position:fixed;inset:0 0 auto;z-index:50;border-bottom:1px solid transparent;
-  transition:background var(--t),border-color var(--t)}
-.nav.fixo{background:rgba(252,254,245,.94);backdrop-filter:blur(14px);border-bottom-color:var(--linha)}
+/* ── NAV: marca à esquerda, links à direita (sem CTA no topo) ── */
+.nav{position:fixed;inset:0 0 auto;z-index:50;background:rgba(252,254,245,.94);
+  backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color var(--t),box-shadow var(--t)}
+.nav.fixo{border-bottom-color:var(--linha);box-shadow:0 14px 34px -30px rgba(35,39,25,.55)}
 .nav__in{display:flex;align-items:center;justify-content:space-between;gap:2rem;height:80px}
 .marca{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--tinta)}
 .marca__mono{width:44px;height:44px;flex:none;color:currentColor}
 .marca__nome{font-family:var(--serif);font-size:1.12rem;letter-spacing:.2em;text-transform:uppercase;line-height:1.15}
 .marca__sub{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.28em;color:var(--sutil);margin-top:3px}
-.nav__links{display:flex;align-items:center;gap:2rem;list-style:none;margin:0;padding:0}
-.nav__links a:not(.btn){font-size:.77rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
-  color:var(--corpo);padding:.4rem 0;position:relative;transition:color var(--t)}
-.nav__links a:not(.btn)::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;
-  background:var(--tinta);transition:right var(--t)}
-.nav__links a:not(.btn):hover{color:var(--tinta)}
-.nav__links a:not(.btn):hover::after{right:0}
-.nav .btn{min-height:44px;padding:0 1.3rem;font-size:.68rem}
+.nav__links{display:flex;align-items:center;gap:2.15rem;list-style:none;margin:0;padding:0}
+.nav__links a{font-family:var(--serif);font-size:1.06rem;letter-spacing:.01em;
+  text-decoration:none;color:var(--tinta);padding:.4rem 0;position:relative;transition:color var(--t)}
+.nav__links a::after{content:"";position:absolute;left:0;right:100%;bottom:.15rem;height:1px;
+  background:var(--sutil);transition:right var(--t)}
+.nav__links a:hover{color:var(--sutil)}
+.nav__links a:hover::after{right:0}
 .hamb{display:none;background:none;border:0;padding:10px;cursor:pointer;color:var(--tinta)}
 .hamb span{display:block;width:24px;height:1px;background:currentColor;margin:5px 0;transition:transform var(--t),opacity var(--t)}
 .nav.aberto .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg)}
@@ -112,85 +124,86 @@ p:last-child{margin-bottom:0}
 .nav.aberto .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 </style>
 <style>
-/* ══ DOBRA 01 — HERO ══════════════════════════════════════════ */
-.hero{position:relative;padding:calc(80px + clamp(3rem,6vw,5rem)) 0 clamp(3rem,5vw,4.5rem);overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:radial-gradient(120% 85% at 88% 4%,var(--menta) 0%,transparent 58%),
-             radial-gradient(90% 70% at 2% 98%,var(--creme) 0%,transparent 62%),var(--porcelana)}
-.hero__grid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
-.hero__sub{margin-top:1.7rem;max-width:46ch}
-.hero__acoes{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2.2rem}
-.hero__apoio{margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--linha);
-  font-family:var(--serif);font-size:clamp(1.15rem,1.9vw,1.45rem);line-height:1.34;color:var(--tinta);max-width:38ch}
-.hero__apoio em{font-style:italic;color:var(--sutil)}
-.hero__midia{position:relative}
-.hero__retrato{aspect-ratio:4/5;background:var(--folha) var(--mono) no-repeat center/96px;
-  border-radius:var(--r);overflow:hidden;position:relative}
-.hero__retrato img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
-.hero__retrato::after{content:attr(data-vazio);position:absolute;left:0;right:0;bottom:13%;
-  display:flex;justify-content:center;font-size:.64rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--sutil);text-align:center;padding:0 1rem}
-.hero__retrato.cheia::after{display:none}
+/* ══ DOBRA 01 — HERO: foto sangrada, texto sobreposto à esquerda ══ */
+.hero{position:relative;min-height:min(90vh,880px);display:flex;align-items:center;
+  padding:calc(80px + clamp(2.5rem,5vw,4rem)) 0 clamp(5rem,8vw,7rem);overflow:hidden;isolation:isolate}
+.hero__fundo{position:absolute;inset:0;z-index:-2;
+  background:radial-gradient(120% 90% at 82% 8%,var(--menta) 0%,transparent 60%),
+             radial-gradient(90% 80% at 4% 96%,var(--creme) 0%,transparent 64%),var(--porcelana)}
+.hero__fundo img{width:100%;height:100%;object-fit:cover;object-position:72% center}
+/* véu que garante leitura do texto por cima da foto */
+.hero__fundo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(95deg,rgba(252,254,245,.97) 0%,rgba(252,254,245,.94) 32%,
+             rgba(252,254,245,.62) 50%,rgba(252,254,245,.12) 66%,transparent 78%)}
+.hero__fundo.vazio::before{content:attr(data-vazio);position:absolute;right:8%;top:50%;
+  transform:translateY(-50%);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sutil);z-index:1}
+.hero__texto{max-width:min(600px,56%);position:relative;z-index:1}
+.hero__sub{font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.3rem,2.3vw,1.72rem);line-height:1.32;color:var(--sutil);margin:1.5rem 0 1.6rem}
+.hero__corpo p{font-size:1rem;line-height:1.68;margin-bottom:1rem;max-width:44ch}
+.hero__cadencia{font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,1.7vw,1.32rem);
+  line-height:1.5;color:var(--tinta);margin:1.7rem 0 0}
+.hero__cadencia span{display:block}
+/* transição curva para a próxima dobra */
+.hero__curva{position:absolute;left:0;right:0;bottom:-1px;height:clamp(44px,5vw,74px);
+  background:var(--creme);border-top-left-radius:50% 100%;border-top-right-radius:50% 100%;z-index:0}
 
-/* ══ DOBRA 02 — DOR + PILARES ═════════════════════════════════ */
-.medos-lista{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:0;
-  border-top:1px solid var(--linha);max-width:52ch}
-.medos-lista li{padding:1.05rem 0 1.05rem 2.6rem;border-bottom:1px solid var(--linha);position:relative;
-  font-family:var(--serif);font-size:clamp(1.12rem,1.8vw,1.35rem);line-height:1.32;color:var(--tinta)}
-.medos-lista li::before{content:"";position:absolute;left:.55rem;top:1.5em;
-  width:12px;height:1px;background:var(--sage)}
-.receio{margin-top:2.2rem;max-width:52ch}
-.receio strong{font-weight:400;color:var(--tinta)}
-
+/* ══ DOBRA 02 — MEDOS EM GRADE 2×2 + PILARES ═════════════════════ */
+.medos-grade{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.4vw,18px);
+  max-width:900px;margin:clamp(2.25rem,4vw,3rem) auto 0}
+.medo{border:1px solid var(--linha);background:rgba(252,254,245,.55);padding:1.15rem 1.4rem;
+  text-align:center;font-family:var(--serif);font-size:clamp(1.08rem,1.6vw,1.24rem);
+  line-height:1.32;color:var(--tinta);transition:background var(--t),border-color var(--t)}
+.medo:hover{background:var(--menta);border-color:var(--folha)}
 .pilares3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,3.5vw,3rem);
-  margin-top:clamp(3rem,5.5vw,4.25rem)}
+  margin-top:clamp(2.75rem,5vw,4rem);text-align:center}
 .pilar{padding-top:1.5rem;border-top:1px solid var(--sage)}
-.pilar h3{font-size:.78rem;font-family:var(--sans);font-weight:400;letter-spacing:.28em;
-  text-transform:uppercase;color:var(--tinta);margin-bottom:.9rem}
-.pilar p{font-family:var(--serif);font-size:1.22rem;line-height:1.35;color:var(--corpo);margin:0}
+.pilar h3{font-size:.76rem;font-family:var(--sans);font-weight:400;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--tinta);margin-bottom:.85rem}
+.pilar p{font-family:var(--serif);font-size:1.2rem;line-height:1.36;color:var(--corpo);margin:0}
 
-/* ══ DOBRA 03 — MÉTODO + AVALIAÇÃO ════════════════════════════ */
+/* ══ DOBRA 03 — MÉTODO + ETAPAS ══════════════════════════════════ */
 .tempos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,3.5vw,3rem);
-  margin-top:clamp(2.5rem,4.5vw,3.5rem)}
+  margin-top:clamp(2.75rem,5vw,3.75rem);text-align:center}
 .tempo{padding-top:1.6rem;border-top:1px solid var(--sage)}
-.tempo__n{font-family:var(--serif);font-size:2.9rem;line-height:1;color:var(--sage);display:block;margin-bottom:.9rem}
-.tempo h3{margin-bottom:.7rem;font-size:.8rem;font-family:var(--sans);font-weight:400;
-  letter-spacing:.26em;text-transform:uppercase}
-.tempo p{font-size:.95rem;line-height:1.68;margin:0}
-
-.etapas{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-  margin-top:clamp(3rem,5.5vw,4.25rem);border:1px solid var(--linha);background:var(--porcelana)}
-.secao--menta .etapas,.secao--creme .etapas{background:rgba(252,254,245,.6)}
-.etapa{padding:1.6rem 1.4rem;position:relative;text-align:center}
+.tempo__n{font-family:var(--serif);font-size:2.9rem;line-height:1;color:var(--sage);display:block;margin-bottom:.85rem}
+.tempo h3{margin-bottom:.75rem;font-size:.78rem;font-family:var(--sans);font-weight:400;
+  letter-spacing:.28em;text-transform:uppercase}
+.tempo p{font-size:.95rem;line-height:1.7;margin:0}
+.etapas{display:grid;grid-template-columns:repeat(4,1fr);
+  margin-top:clamp(2.5rem,4.5vw,3.5rem);border:1px solid var(--linha);background:rgba(252,254,245,.6)}
+.etapa{padding:1.6rem 1.3rem;position:relative;text-align:center}
 .etapa+.etapa{border-left:1px solid var(--linha)}
-.etapa span{display:block;font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--sutil);margin-bottom:.5rem}
+.etapa span{display:block;font-size:.63rem;letter-spacing:.24em;text-transform:uppercase;color:var(--sutil);margin-bottom:.5rem}
 .etapa b{font-family:var(--serif);font-weight:400;font-size:1.2rem;color:var(--tinta);line-height:1.2}
 .etapa+.etapa::after{content:"";position:absolute;left:-5px;top:50%;width:9px;height:9px;
   border-top:1px solid var(--sage);border-right:1px solid var(--sage);
-  transform:translateY(-50%) rotate(45deg);background:var(--porcelana)}
-.secao--menta .etapa+.etapa::after{background:var(--menta)}
-.secao--creme .etapa+.etapa::after{background:var(--creme)}
+  transform:translateY(-50%) rotate(45deg);background:var(--menta)}
 
-/* ══ DOBRA 04 — GALERIA ═══════════════════════════════════════
-   Molduras 1:1 em grid uniforme. Como as fotos têm largura ≤ altura,
-   "cover" numa moldura quadrada só corta na VERTICAL — as laterais
-   ficam intactas, essencial num antes/depois lado a lado.
-   data-corte decide para qual ponta vai a sobra: é assim que a
-   marca d'água sai de quadro.                                     */
-/* Faixa deslizante contínua. O trilho carrega os 9 casos DUAS vezes;
-   a animação desloca exatamente a largura da primeira leva (9 cartões
-   + 9 vãos), então a emenda cai no mesmo pixel e o laço fica invisível.
-   -50% = 9 cartões + 8,5 vãos, daí o meio vão extra no calc.          */
+/* ══ DOBRA 04 — CARROSSEL COM SETAS ══════════════════════════════
+   Rolagem contínua por scrollLeft (não por animação CSS), para as
+   setas poderem interferir. O trilho carrega os 9 casos duas vezes:
+   ao passar da metade, o scroll volta a metade exata e o laço some.
+   As molduras são 1:1 e as fotos têm largura ≤ altura, então "cover"
+   só corta na VERTICAL — as laterais do antes/depois ficam intactas.
+   data-corte manda a sobra para a ponta onde está a marca d'água.   */
 .carrossel{--vao:clamp(14px,1.6vw,22px);--cartao:clamp(232px,23vw,320px);
-  position:relative;margin-top:clamp(2.75rem,5vw,3.75rem);overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
-          mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
-.carrossel__trilho{display:flex;gap:var(--vao);width:max-content;
-  animation:desliza 64s linear infinite;will-change:transform}
-.carrossel:hover .carrossel__trilho,
-.carrossel:focus-within .carrossel__trilho{animation-play-state:paused}
-@keyframes desliza{from{transform:translate3d(0,0,0)}
-                   to{transform:translate3d(calc(-50% - var(--vao)/2),0,0)}}
+  position:relative;margin-top:clamp(2.5rem,4.5vw,3.5rem)}
+.carrossel__via{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.carrossel__via::-webkit-scrollbar{display:none}
+.carrossel__trilho{display:flex;gap:var(--vao);width:max-content;padding-inline:var(--vao)}
+.seta{position:absolute;top:calc(var(--cartao)/2);transform:translateY(-50%);z-index:3;
+  width:52px;height:52px;border-radius:50%;border:1px solid var(--linha);
+  background:rgba(252,254,245,.92);backdrop-filter:blur(6px);color:var(--tinta);
+  display:grid;place-items:center;cursor:pointer;
+  transition:background var(--t),border-color var(--t),color var(--t)}
+.seta:hover{background:var(--tinta);border-color:var(--tinta);color:var(--porcelana)}
+.seta--ant{left:clamp(8px,2.5vw,34px)}
+.seta--prox{right:clamp(8px,2.5vw,34px)}
+.seta svg{width:17px;height:17px}
 .caso{margin:0;display:flex;flex-direction:column;flex:none;width:var(--cartao)}
 .caso__moldura{position:relative;overflow:hidden;aspect-ratio:1;
   background:var(--folha) var(--mono) no-repeat center/86px;border-radius:var(--r)}
@@ -202,92 +215,91 @@ p:last-child{margin-bottom:0}
 .caso__moldura[data-zoom="sim"]    img{transform:scale(1.11)}
 .caso__moldura[data-zoom="sim"][data-corte="topo"] img{transform-origin:50% 100%}
 .caso__moldura[data-zoom="sim"][data-corte="base"] img{transform-origin:50% 0%}
-.caso:hover .caso__moldura img{transform:scale(1.04)}
-.caso:hover .caso__moldura[data-corte="ambos"] img{transform:scale(1.09)}
-.caso:hover .caso__moldura[data-zoom="sim"] img{transform:scale(1.15)}
 .caso__moldura::after{content:attr(data-vazio);position:absolute;left:0;right:0;bottom:14%;
   display:none;justify-content:center;font-size:.64rem;letter-spacing:.13em;
   text-transform:uppercase;color:var(--sutil);text-align:center;padding:0 1rem}
 .caso__moldura.vazia::after{display:flex}
 .vazia img{opacity:0}
 .caso figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
-  margin-top:.75rem;font-size:.69rem;letter-spacing:.13em;text-transform:uppercase;color:var(--sutil)}
+  margin-top:.75rem;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--sutil)}
 .caso figcaption b{font-weight:400;color:var(--tinta)}
-.nota{margin-top:2.2rem;font-size:.81rem;line-height:1.6;color:var(--sutil);max-width:76ch}
+.nota{margin:2.4rem auto 0;font-size:.81rem;line-height:1.62;color:var(--sutil);
+  max-width:70ch;text-align:center}
 
 .protocolos2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,2.5rem);
-  margin-top:clamp(3rem,5.5vw,4.25rem)}
-.proto{background:var(--porcelana);border:1px solid var(--linha);padding:clamp(1.8rem,3vw,2.6rem);border-radius:var(--r)}
-.secao--creme .proto{background:var(--creme)}
-.proto__selo{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sutil);margin-bottom:.8rem}
-.proto h3{margin-bottom:1rem}
-.proto__frase{font-family:var(--serif);font-size:1.28rem;line-height:1.32;color:var(--tinta);margin-bottom:1rem}
-.proto p:last-child{font-size:.96rem}
+  margin-top:clamp(2.75rem,5vw,4rem)}
+.proto{background:rgba(252,254,245,.6);border:1px solid var(--linha);
+  padding:clamp(1.9rem,3vw,2.7rem);border-radius:var(--r);text-align:center}
+.proto__selo{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sutil);margin-bottom:.85rem}
+.proto h3{margin-bottom:1.1rem}
+.proto__frase{font-family:var(--serif);font-style:italic;font-size:1.28rem;
+  line-height:1.34;color:var(--sutil);margin-bottom:1.1rem}
+.proto p:last-child{font-size:.96rem;max-width:42ch;margin-inline:auto}
 
-/* ══ DOBRA 05 — PROCEDIMENTOS ═════════════════════════════════ */
-.menu{list-style:none;margin:clamp(2.5rem,4.5vw,3.25rem) 0 0;padding:0;border-top:1px solid var(--linha)}
-.menu li{display:grid;grid-template-columns:minmax(220px,.9fr) 1.1fr;gap:clamp(1.5rem,4vw,3.5rem);
-  align-items:baseline;padding:1.5rem 0;border-bottom:1px solid var(--linha);transition:padding-left var(--t)}
-.menu li:hover{padding-left:.7rem}
-.menu h3{font-size:1.32rem}
-.menu p{font-size:.93rem;margin:0}
+/* ══ DOBRA 05 — PROCEDIMENTOS: grade centralizada ════════════════ */
+.procs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linha);
+  border:1px solid var(--linha);margin-top:clamp(2.75rem,5vw,3.75rem)}
+.proc{background:var(--creme);padding:2.1rem 1.7rem;text-align:center;transition:background var(--t)}
+.proc:hover{background:var(--menta)}
+.proc h3{font-size:1.3rem;margin-bottom:.6rem}
+.proc p{font-size:.92rem;line-height:1.62;margin:0}
 
-/* ══ DOBRA 06 — THAINAN + DEPOIMENTOS ═════════════════════════ */
-.sobre{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(2.5rem,5vw,4.5rem);align-items:start}
+/* ══ DOBRA 06 — THAINAN + DEPOIMENTOS ════════════════════════════ */
+.sobre{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
 .sobre__foto{aspect-ratio:4/5;background:var(--sage) var(--mono) no-repeat center/96px;
-  border-radius:var(--r);overflow:hidden;position:relative;position:sticky;top:104px}
+  border-radius:var(--r);overflow:hidden;position:relative}
 .sobre__foto img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
 .sobre__foto::after{content:attr(data-vazio);position:absolute;left:0;right:0;bottom:13%;
   display:flex;justify-content:center;font-size:.62rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--sutil);text-align:center;padding:0 1rem}
 .sobre__foto.cheia::after{display:none}
-.pergunta{margin:2rem 0;padding:1.6rem 1.8rem;background:var(--porcelana);border-left:2px solid var(--tinta);
-  font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,1.7rem);line-height:1.28;color:var(--tinta)}
-.secao--creme .pergunta{background:var(--creme)}
+.pergunta{margin:1.9rem 0;padding:1.7rem 1.9rem;background:rgba(252,254,245,.6);
+  border-left:2px solid var(--sage);font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.28rem,2.1vw,1.65rem);line-height:1.3;color:var(--tinta)}
 .credenciais{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(1.5rem,3vw,2.5rem);
-  margin-top:2.2rem;padding-top:1.9rem;border-top:1px solid var(--linha);list-style:none;padding-left:0}
-.credenciais li{padding:.85rem 0;border-bottom:1px solid var(--linha);font-size:.9rem}
-.credenciais b{display:block;font-weight:400;font-size:.66rem;letter-spacing:.2em;
+  margin-top:2.1rem;padding-top:1.8rem;border-top:1px solid var(--linha);list-style:none;padding-left:0}
+.credenciais li{padding:.8rem 0;border-bottom:1px solid var(--linha);font-size:.89rem}
+.credenciais b{display:block;font-weight:400;font-size:.65rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--sutil);margin-bottom:.25rem}
-
 .prova{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.3vw,18px);
   margin-top:clamp(2.5rem,4.5vw,3.5rem)}
-.prova figure{margin:0;background:var(--porcelana) var(--mono) no-repeat center/62px;
+.prova figure{margin:0;background:rgba(252,254,245,.6) var(--mono) no-repeat center/62px;
   border:1px solid var(--linha);border-radius:var(--r);aspect-ratio:9/16;position:relative;overflow:hidden}
 .prova img{width:100%;height:100%;object-fit:cover;object-position:top;position:relative;z-index:1}
 .prova figure::after{content:attr(data-vazio);position:absolute;left:0;right:0;bottom:12%;
   display:flex;justify-content:center;font-size:.6rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--sutil);text-align:center;padding:0 .75rem}
 .prova figure.cheia::after{display:none}
-.frases{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.5vw,2rem);margin-top:clamp(2.5rem,4vw,3.25rem)}
-.frases p{margin:0;padding:1.7rem 1.5rem;background:var(--porcelana);border:1px solid var(--linha);
-  border-radius:var(--r);text-align:center;font-family:var(--serif);font-style:italic;
-  font-size:clamp(1.25rem,2vw,1.55rem);color:var(--tinta);line-height:1.3}
-.secao--creme .frases p{background:var(--creme)}
+.frases{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.5vw,2rem);
+  margin-top:clamp(2.5rem,4vw,3.25rem)}
+.frases p{margin:0;padding:1.7rem 1.4rem;border:1px solid var(--linha);border-radius:var(--r);
+  text-align:center;font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.22rem,2vw,1.5rem);color:var(--tinta);line-height:1.3;background:rgba(252,254,245,.5)}
 
-/* ══ DOBRA 07 — FAQ + CTA ═════════════════════════════════════ */
-.faq{margin-top:clamp(2.5rem,4.5vw,3.5rem);border-top:1px solid var(--linha);max-width:960px}
+/* ══ DOBRA 07 — FAQ + FECHO ══════════════════════════════════════ */
+.faq{margin:clamp(2.5rem,4.5vw,3.5rem) auto 0;border-top:1px solid var(--linha);max-width:860px}
 .faq details{border-bottom:1px solid var(--linha)}
 .faq summary{list-style:none;cursor:pointer;padding:1.55rem 3rem 1.55rem 0;position:relative;
-  font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.5rem);line-height:1.3;color:var(--tinta);
-  transition:color var(--t)}
+  font-family:var(--serif);font-size:clamp(1.18rem,1.9vw,1.45rem);line-height:1.3;
+  color:var(--tinta);transition:color var(--t)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"";position:absolute;right:.35rem;top:50%;width:11px;height:11px;
   border-right:1px solid var(--sutil);border-bottom:1px solid var(--sutil);
   transform:translateY(-70%) rotate(45deg);transition:transform var(--t)}
 .faq details[open] summary::after{transform:translateY(-20%) rotate(225deg)}
 .faq summary:hover{color:var(--sutil)}
-.faq__r{padding:0 3rem 1.7rem 0;font-size:1rem;line-height:1.7;margin:0;max-width:70ch}
+.faq__r{padding:0 3rem 1.7rem 0;font-size:1rem;line-height:1.72;margin:0}
 
 .fecho{background:var(--profundo);color:rgba(252,254,245,.76);text-align:center}
 .fecho h2{color:var(--porcelana)}
+.fecho .alt{color:rgba(252,254,245,.5)}
 .fecho .rotulo{color:rgba(252,254,245,.55);justify-content:center}
 .fecho .rotulo::before{background:rgba(252,254,245,.35)}
-.fecho p{margin-inline:auto;max-width:56ch}
-.fecho__sub{font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,2.05rem);line-height:1.28;
-  color:rgba(252,254,245,.9);margin:1.2rem auto 1.8rem;max-width:24ch}
+.fecho__sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,2.6vw,2.05rem);
+  line-height:1.28;color:rgba(252,254,245,.88);margin:1.3rem auto 1.7rem;max-width:26ch}
+.fecho p.lead{margin-inline:auto;max-width:56ch;color:rgba(252,254,245,.76)}
 .assinatura{margin-top:2.6rem;padding-top:2rem;border-top:1px solid rgba(252,254,245,.14);
-  font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,254,245,.55)}
+  font-size:.73rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,254,245,.55)}
 
 .rodape{background:var(--profundo);color:rgba(252,254,245,.62);padding:clamp(3.25rem,6vw,5rem) 0 2.25rem;font-size:.87rem}
 .rodape__topo{display:grid;grid-template-columns:1.4fr 1fr 1.2fr;gap:clamp(2rem,4vw,3rem);
@@ -305,40 +317,37 @@ p:last-child{margin-bottom:0}
   display:grid;place-items:center;transition:background var(--t),border-color var(--t)}
 .redes a:hover{background:rgba(252,254,245,.1);border-color:rgba(252,254,245,.4)}
 .redes svg{width:17px;height:17px}
-
-.flutua{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:.65rem;
-  min-height:54px;padding:0 1.45rem 0 1.1rem;background:var(--tinta);color:var(--porcelana);
-  text-decoration:none;border-radius:999px;font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
-  box-shadow:0 16px 40px -18px rgba(27,31,20,.7);opacity:0;transform:translateY(14px);pointer-events:none;
-  transition:opacity var(--t),transform var(--t),background var(--t)}
+.flutua{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;
+  display:grid;place-items:center;background:#25d366;color:#fff;text-decoration:none;border-radius:50%;
+  box-shadow:0 14px 34px -14px rgba(27,31,20,.6);opacity:0;transform:scale(.8);pointer-events:none;
+  transition:opacity var(--t),transform var(--t)}
 .flutua.ver{opacity:1;transform:none;pointer-events:auto}
-.flutua:hover{background:var(--profundo)}
-.flutua svg{width:20px;height:20px;flex:none}
+.flutua svg{width:30px;height:30px}
 .rev{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
 .rev.no-ar{opacity:1;transform:none}
 
 @media (max-width:1080px){
-  .hero__grid{grid-template-columns:1fr;gap:2.75rem}
-  .hero__midia{max-width:440px}
-  .intro{grid-template-columns:1fr;gap:1.5rem;align-items:start}
+  .hero{min-height:0;padding-bottom:clamp(4rem,7vw,6rem)}
+  .hero__texto{max-width:100%}
+  .hero__fundo::after{background:linear-gradient(180deg,rgba(252,254,245,.96) 0%,
+    rgba(252,254,245,.9) 46%,rgba(252,254,245,.55) 74%,rgba(252,254,245,.25) 100%)}
   .protocolos2{grid-template-columns:1fr}
+  .procs{grid-template-columns:repeat(2,1fr)}
   .sobre{grid-template-columns:1fr}
-  .sobre__foto{max-width:380px;position:static}
+  .sobre__foto{max-width:380px;margin-inline:auto}
   .rodape__topo{grid-template-columns:1fr 1fr}
 }
 @media (max-width:820px){
   :root{--shell:calc(100% - 2.4rem)}
   .nav>.shell>nav{display:none}
   .hamb{display:block}
-  .nav.aberto{background:var(--porcelana);border-bottom-color:var(--linha)}
   .nav.aberto>.shell>nav{display:block}
   .nav.aberto .nav__links{display:grid;position:absolute;top:80px;left:0;right:0;
     background:var(--porcelana);padding:1.2rem 1.2rem 2rem;gap:0;
     border-bottom:1px solid var(--linha);box-shadow:0 24px 48px -30px rgba(35,39,25,.5)}
   .nav.aberto .nav__links li{border-bottom:1px solid var(--linha)}
-  .nav.aberto .nav__links li:last-child{border:0;padding-top:1.1rem}
-  .nav.aberto .nav__links a:not(.btn){display:block;padding:.95rem 0;font-size:.84rem}
-  .nav.aberto .btn{display:inline-flex;width:100%}
+  .nav.aberto .nav__links li:last-child{border:0}
+  .nav.aberto .nav__links a{display:block;padding:.95rem 0}
   .pilares3,.tempos{grid-template-columns:1fr;gap:2rem}
   .etapas{grid-template-columns:repeat(2,1fr)}
   .etapa:nth-child(3){border-left:0}
@@ -346,29 +355,28 @@ p:last-child{margin-bottom:0}
   .etapa:nth-child(3)::after{display:none}
   .prova{grid-template-columns:repeat(3,1fr)}
   .frases{grid-template-columns:1fr}
-  .menu li{grid-template-columns:1fr;gap:.45rem}
+  .procs{grid-template-columns:1fr}
   .credenciais{grid-template-columns:1fr}
   .rodape__topo{grid-template-columns:1fr;gap:2.25rem}
-  .flutua{right:14px;bottom:14px;padding:0 1.2rem 0 .95rem;font-size:.7rem}
+  .seta{width:44px;height:44px}
 }
 @media (max-width:560px){
   body{font-size:16px}
+  .medos-grade{grid-template-columns:1fr}
   .prova{grid-template-columns:repeat(2,1fr)}
   .etapas{grid-template-columns:1fr}
   .etapa+.etapa{border-left:0;border-top:1px solid var(--linha)}
   .etapa+.etapa::after{display:none}
-  .hero__acoes{flex-direction:column}
-  .hero__acoes .btn{width:100%}
+  .acoes{flex-direction:column}
+  .acoes .btn{width:100%}
+  .seta--ant{left:4px}.seta--prox{right:4px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .carrossel{overflow-x:auto;-webkit-mask-image:none;mask-image:none;
-    scroll-snap-type:x mandatory;padding-bottom:.5rem}
-  .carrossel__trilho{animation:none}
-  .caso{scroll-snap-align:center}
-  .caso[aria-hidden="true"]{display:none}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   .rev{opacity:1;transform:none}
+  .carrossel__via{scroll-snap-type:x mandatory}
+  .caso{scroll-snap-align:center}
 }
 </style>
 </head>
@@ -387,12 +395,12 @@ p:last-child{margin-bottom:0}
     </a>
     <nav>
       <ul class="nav__links" id="links">
+        <li><a href="#topo">Início</a></li>
         <li><a href="#metodo">Método</a></li>
         <li><a href="#resultados">Resultados</a></li>
         <li><a href="#procedimentos">Procedimentos</a></li>
-        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#sobre">Thainan Matos</a></li>
         <li><a href="#faq">Dúvidas</a></li>
-        <li><a class="btn" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20agendar%20minha%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a></li>
       </ul>
     </nav>
     <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
@@ -401,52 +409,52 @@ p:last-child{margin-bottom:0}
 
 <main id="topo">
 
-<!-- ═══ DOBRA 01 — DESEJO ═══════════════════════════════════════ -->
+<!-- ═══ DOBRA 01 — DESEJO: texto à esquerda sobre foto sangrada ═══ -->
 <section class="hero">
+  <div class="hero__fundo" id="heroFundo" data-vazio="img/retrato-hero.jpg">
+    <img src="img/retrato-hero.jpg" alt="" aria-hidden="true">
+  </div>
   <div class="shell">
-    <div class="hero__grid">
-      <div>
-        <p class="rotulo">Harmonização facial · [CIDADE/UF]</p>
-        <h1>Beleza que respeita<br>quem você é.</h1>
-        <p class="lead hero__sub">Harmonização facial planejada para valorizar seus traços, respeitar suas proporções e entregar um resultado natural — sem exageros e sem transformar sua identidade.</p>
-        <div class="hero__acoes">
-          <a class="btn" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20agendar%20minha%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar minha avaliação
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn--linha" href="#resultados">Ver resultados</a>
-        </div>
-        <p class="hero__apoio">Seu rosto não precisa parecer diferente.<br><em>Precisa fazer mais sentido para você.</em></p>
+    <div class="hero__texto">
+      <h1><span class="alt">Beleza que respeita</span>quem você é.</h1>
+      <p class="hero__sub">Harmonização facial planejada para valorizar seus traços, respeitar suas proporções e entregar um resultado natural.</p>
+      <div class="hero__corpo">
+        <p>Sem exageros e sem transformar sua identidade.</p>
+        <p>Cada rosto carrega uma história, e nada aqui é apagado. O que existe é organizado, sustentado e devolvido em equilíbrio.</p>
       </div>
-      <div class="hero__midia">
-        <div class="hero__retrato" data-vazio="img/retrato-hero.jpg">
-          <img src="img/retrato-hero.jpg" alt="Thainan Matos, especialista em harmonização facial">
-        </div>
+      <p class="hero__cadencia">
+        <span>Seu rosto não precisa parecer diferente.</span>
+        <span>Precisa fazer mais sentido para você.</span>
+      </p>
+      <div class="acoes acoes--esq">
+        <a class="btn" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20agendar%20minha%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar minha avaliação</a>
       </div>
     </div>
   </div>
+  <div class="hero__curva" aria-hidden="true"></div>
 </section>
 
-<!-- ═══ DOBRA 02 — DOR + QUEBRA DE OBJEÇÃO ══════════════════════ -->
+<!-- ═══ DOBRA 02 — DOR: medos em grade 2×2 + pilares ═══════════════ -->
 <section class="secao secao--creme">
   <div class="shell">
-    <div class="intro intro--topo">
-      <div>
-        <p class="rotulo">Antes de decidir</p>
-        <h2>Harmonização facial<br>não precisa ter cara<br>de harmonização.</h2>
-      </div>
-      <div>
-        <p class="intro__lead">Talvez você já tenha pensado em fazer um procedimento, mas desistiu por medo de:</p>
-        <ul class="medos-lista">
-          <li>Ficar com o rosto artificial</li>
-          <li>Perder suas características naturais</li>
-          <li>Exagerar no preenchimento</li>
-          <li>Não se reconhecer depois</li>
-          <li>Ter um resultado bonito, mas que não combina com você</li>
-        </ul>
-        <div class="receio">
-          <p><strong>E esse receio faz sentido.</strong></p>
-          <p>Uma boa harmonização não começa escolhendo o que aplicar. Começa entendendo o seu rosto.</p>
-        </div>
-      </div>
+    <div class="intro">
+      <p class="rotulo">Antes de decidir</p>
+      <h2><span class="alt">Harmonização facial</span>não precisa ter cara de harmonização.</h2>
+      <p class="intro__lead">Talvez você já tenha pensado em fazer um procedimento, mas desistiu por medo de:</p>
+    </div>
+
+    <div class="medos-grade rev">
+      <div class="medo">Ficar com o rosto artificial</div>
+      <div class="medo">Perder suas características naturais</div>
+      <div class="medo">Exagerar no preenchimento</div>
+      <div class="medo">Não se reconhecer depois</div>
+      <div class="medo">Ter um resultado bonito, mas que não combina com você</div>
+      <div class="medo">Fazer algo sem ter como voltar atrás</div>
+    </div>
+
+    <div class="apoio-centro rev">
+      <p>E esse receio faz sentido.</p>
+      <p>Uma boa harmonização não começa escolhendo o que aplicar. Começa entendendo o seu rosto.</p>
     </div>
 
     <div class="pilares3 rev">
@@ -455,18 +463,16 @@ p:last-child{margin-bottom:0}
       <article class="pilar"><h3>Elegância</h3><p>Buscar um resultado sutil, equilibrado e sofisticado.</p></article>
     </div>
 
-    <p class="fecho-frase rev" style="margin-top:clamp(3rem,5.5vw,4.25rem)">Menos excesso. Mais precisão.<span>Menos padrão. Mais identidade.</span></p>
+    <p class="remate rev">Menos excesso. Mais precisão.<span>Menos padrão. Mais identidade.</span></p>
   </div>
 </section>
 
-<!-- ═══ DOBRA 03 — AUTORIDADE: MÉTODO + AVALIAÇÃO ═══════════════ -->
+<!-- ═══ DOBRA 03 — AUTORIDADE: método + avaliação ══════════════════ -->
 <section class="secao secao--menta" id="metodo">
   <div class="shell">
     <div class="intro">
-      <div>
-        <p class="rotulo">Método Leitura Facial</p>
-        <h2>Antes de transformar<br>o rosto, é preciso<br>saber enxergá-lo.</h2>
-      </div>
+      <p class="rotulo">Método Leitura Facial</p>
+      <h2><span class="alt">Antes de transformar o rosto,</span>é preciso saber enxergá-lo.</h2>
       <p class="intro__lead">A diferença não está apenas na técnica. Está em saber onde mexer, onde não mexer e qual é o momento certo para cada decisão.</p>
     </div>
 
@@ -479,7 +485,7 @@ p:last-child{margin-bottom:0}
         <p>Só então escolhemos as técnicas e procedimentos necessários para construir o resultado.</p></article>
     </div>
 
-    <p class="rotulo rev" style="margin-top:clamp(3rem,5.5vw,4.25rem);margin-bottom:0">Sua avaliação acontece em 4 etapas</p>
+    <p class="apoio-centro rev" style="margin-bottom:0">Sua avaliação acontece em 4 etapas:</p>
     <div class="etapas rev">
       <div class="etapa"><span>Etapa 01</span><b>Conversa</b></div>
       <div class="etapa"><span>Etapa 02</span><b>Análise facial</b></div>
@@ -487,93 +493,63 @@ p:last-child{margin-bottom:0}
       <div class="etapa"><span>Etapa 04</span><b>Protocolo</b></div>
     </div>
 
-    <p class="fecho-frase rev" style="margin-top:clamp(3rem,5.5vw,4.25rem)">O objetivo não é preencher um rosto.<span>É construir equilíbrio.</span></p>
+    <p class="remate rev">O objetivo não é preencher um rosto.<span>É construir equilíbrio.</span></p>
 
-    <div style="margin-top:2.4rem">
-      <a class="btn rev" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20fazer%20minha%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Quero fazer minha avaliação
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="acoes rev">
+      <a class="btn" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20fazer%20minha%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Quero fazer minha avaliação</a>
     </div>
   </div>
 </section>
 
-<!-- ═══ DOBRA 04 — PROVA: RESULTADOS + PROTOCOLOS ═══════════════ -->
+<!-- ═══ DOBRA 04 — PROVA: resultados + protocolos ══════════════════ -->
 <section class="secao" id="resultados">
   <div class="shell">
     <div class="intro">
-      <div>
-        <p class="rotulo">Resultados</p>
-        <h2>Resultados que você<br>percebe. Sem precisar<br>explicar.</h2>
-      </div>
+      <p class="rotulo">Resultados</p>
+      <h2><span class="alt">Resultados que você percebe.</span>Sem precisar explicar.</h2>
       <p class="intro__lead">Cada rosto possui uma necessidade diferente. Por isso, os resultados não seguem uma fórmula pronta: são planejados para melhorar proporção, contorno, sustentação e equilíbrio, preservando a identidade de cada paciente.</p>
-    </div>
-
-    <!-- data-corte: para que ponta vai a sobra do enquadramento (tira a marca d'água de quadro)
-         data-zoom="sim": foto de origem quadrada, precisa de folga extra -->
-    </div><!-- fecha .shell: a faixa sangra de ponta a ponta -->
-
-  <div class="carrossel rev">
-    <div class="carrossel__trilho">
-      <figure class="caso"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-01.jpg">
-        <img src="img/casos/caso-01.jpg" alt="Antes e depois de harmonização facial: perfil com lábios e mento redefinidos" loading="lazy"></div>
-        <figcaption><b>Perfil e lábios</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso"><div class="caso__moldura" data-corte="topo" data-zoom="sim" data-vazio="caso-02.jpg">
-        <img src="img/casos/caso-02.jpg" alt="Antes e depois de harmonização facial: definição do terço inferior" loading="lazy"></div>
-        <figcaption><b>Terço inferior</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso"><div class="caso__moldura" data-corte="topo" data-vazio="caso-03.jpg">
-        <img src="img/casos/caso-03.jpg" alt="Antes e depois de harmonização facial: contorno mandibular e projeção de mento" loading="lazy"></div>
-        <figcaption><b>Contorno mandibular</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso"><div class="caso__moldura" data-corte="topo" data-vazio="caso-04.jpg">
-        <img src="img/casos/caso-04.jpg" alt="Antes e depois de harmonização facial: sustentação do terço médio" loading="lazy"></div>
-        <figcaption><b>Terço médio</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso"><div class="caso__moldura" data-corte="ambos" data-vazio="caso-05.jpg">
-        <img src="img/casos/caso-05.jpg" alt="Antes e depois de harmonização facial: suporte periorbital e leveza do olhar" loading="lazy"></div>
-        <figcaption><b>Suporte do olhar</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso"><div class="caso__moldura" data-corte="ambos" data-vazio="caso-06.jpg">
-        <img src="img/casos/caso-06.jpg" alt="Antes e depois de harmonização facial: perfil alinhado entre nariz, lábios e mento" loading="lazy"></div>
-        <figcaption><b>Linha de perfil</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-07.jpg">
-        <img src="img/casos/caso-07.jpg" alt="Antes e depois de harmonização facial: refinamento sutil preservando os traços" loading="lazy"></div>
-        <figcaption><b>Refinamento sutil</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso"><div class="caso__moldura" data-corte="topo" data-zoom="sim" data-vazio="caso-08.jpg">
-        <img src="img/casos/caso-08.jpg" alt="Antes e depois de harmonização facial: volume labial equilibrado e ângulo definido" loading="lazy"></div>
-        <figcaption><b>Lábios e ângulo</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso"><div class="caso__moldura" data-corte="base" data-vazio="caso-09.jpg">
-        <img src="img/casos/caso-09.jpg" alt="Antes e depois de harmonização facial: definição de contorno preservando a expressão" loading="lazy"></div>
-        <figcaption><b>Definição de contorno</b><span>Antes · Depois</span></figcaption></figure>
-
-      <!-- segunda leva: só para fechar o laço sem emenda -->
-      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-01.jpg">
-        <img src="img/casos/caso-01.jpg" alt="Antes e depois de harmonização facial: perfil com lábios e mento redefinidos"></div>
-        <figcaption><b>Perfil e lábios</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="topo" data-zoom="sim" data-vazio="caso-02.jpg">
-        <img src="img/casos/caso-02.jpg" alt="Antes e depois de harmonização facial: definição do terço inferior"></div>
-        <figcaption><b>Terço inferior</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="topo" data-vazio="caso-03.jpg">
-        <img src="img/casos/caso-03.jpg" alt="Antes e depois de harmonização facial: contorno mandibular e projeção de mento"></div>
-        <figcaption><b>Contorno mandibular</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="topo" data-vazio="caso-04.jpg">
-        <img src="img/casos/caso-04.jpg" alt="Antes e depois de harmonização facial: sustentação do terço médio"></div>
-        <figcaption><b>Terço médio</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="ambos" data-vazio="caso-05.jpg">
-        <img src="img/casos/caso-05.jpg" alt="Antes e depois de harmonização facial: suporte periorbital e leveza do olhar"></div>
-        <figcaption><b>Suporte do olhar</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="ambos" data-vazio="caso-06.jpg">
-        <img src="img/casos/caso-06.jpg" alt="Antes e depois de harmonização facial: perfil alinhado entre nariz, lábios e mento"></div>
-        <figcaption><b>Linha de perfil</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-07.jpg">
-        <img src="img/casos/caso-07.jpg" alt="Antes e depois de harmonização facial: refinamento sutil preservando os traços"></div>
-        <figcaption><b>Refinamento sutil</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="topo" data-zoom="sim" data-vazio="caso-08.jpg">
-        <img src="img/casos/caso-08.jpg" alt="Antes e depois de harmonização facial: volume labial equilibrado e ângulo definido"></div>
-        <figcaption><b>Lábios e ângulo</b><span>Antes · Depois</span></figcaption></figure>
-      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="base" data-vazio="caso-09.jpg">
-        <img src="img/casos/caso-09.jpg" alt="Antes e depois de harmonização facial: definição de contorno preservando a expressão"></div>
-        <figcaption><b>Definição de contorno</b><span>Antes · Depois</span></figcaption></figure>
     </div>
   </div>
 
-  <div class="shell">
+  <div class="carrossel rev">
+    <button class="seta seta--ant" id="setaAnt" aria-label="Ver casos anteriores" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="carrossel__via" id="via">
+      <div class="carrossel__trilho" id="trilho">
+        <figure class="caso"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-01.jpg">
+          <img src="img/casos/caso-01.jpg" alt="Antes e depois de harmonização facial: perfil com lábios e mento redefinidos" loading="lazy"></div>
+          <figcaption><b>Perfil e lábios</b><span>Antes · Depois</span></figcaption></figure>
+        <figure class="caso"><div class="caso__moldura" data-corte="topo" data-zoom="sim" data-vazio="caso-02.jpg">
+          <img src="img/casos/caso-02.jpg" alt="Antes e depois de harmonização facial: definição do terço inferior" loading="lazy"></div>
+          <figcaption><b>Terço inferior</b><span>Antes · Depois</span></figcaption></figure>
+        <figure class="caso"><div class="caso__moldura" data-corte="topo" data-vazio="caso-03.jpg">
+          <img src="img/casos/caso-03.jpg" alt="Antes e depois de harmonização facial: contorno mandibular e projeção de mento" loading="lazy"></div>
+          <figcaption><b>Contorno mandibular</b><span>Antes · Depois</span></figcaption></figure>
+        <figure class="caso"><div class="caso__moldura" data-corte="topo" data-vazio="caso-04.jpg">
+          <img src="img/casos/caso-04.jpg" alt="Antes e depois de harmonização facial: sustentação do terço médio" loading="lazy"></div>
+          <figcaption><b>Terço médio</b><span>Antes · Depois</span></figcaption></figure>
+        <figure class="caso"><div class="caso__moldura" data-corte="ambos" data-vazio="caso-05.jpg">
+          <img src="img/casos/caso-05.jpg" alt="Antes e depois de harmonização facial: suporte periorbital e leveza do olhar" loading="lazy"></div>
+          <figcaption><b>Suporte do olhar</b><span>Antes · Depois</span></figcaption></figure>
+        <figure class="caso"><div class="caso__moldura" data-corte="ambos" data-vazio="caso-06.jpg">
+          <img src="img/casos/caso-06.jpg" alt="Antes e depois de harmonização facial: perfil alinhado entre nariz, lábios e mento" loading="lazy"></div>
+          <figcaption><b>Linha de perfil</b><span>Antes · Depois</span></figcaption></figure>
+        <figure class="caso"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-07.jpg">
+          <img src="img/casos/caso-07.jpg" alt="Antes e depois de harmonização facial: refinamento sutil preservando os traços" loading="lazy"></div>
+          <figcaption><b>Refinamento sutil</b><span>Antes · Depois</span></figcaption></figure>
+        <figure class="caso"><div class="caso__moldura" data-corte="topo" data-zoom="sim" data-vazio="caso-08.jpg">
+          <img src="img/casos/caso-08.jpg" alt="Antes e depois de harmonização facial: volume labial equilibrado e ângulo definido" loading="lazy"></div>
+          <figcaption><b>Lábios e ângulo</b><span>Antes · Depois</span></figcaption></figure>
+        <figure class="caso"><div class="caso__moldura" data-corte="base" data-vazio="caso-09.jpg">
+          <img src="img/casos/caso-09.jpg" alt="Antes e depois de harmonização facial: definição de contorno preservando a expressão" loading="lazy"></div>
+          <figcaption><b>Definição de contorno</b><span>Antes · Depois</span></figcaption></figure>
+      </div>
+    </div>
+    <button class="seta seta--prox" id="setaProx" aria-label="Ver próximos casos" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
 
+  <div class="shell">
     <p class="nota">Registros feitos em consultório, sem edição de traço ou retoque de contorno. Resultados individuais: cada rosto responde de forma diferente conforme anatomia, qualidade de pele, idade e histórico de procedimentos. Imagens publicadas com autorização por escrito das pacientes.</p>
 
     <div class="protocolos2 rev">
@@ -591,54 +567,52 @@ p:last-child{margin-bottom:0}
       </article>
     </div>
 
-    <div style="margin-top:2.6rem">
-      <a class="btn" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20descobrir%20o%20meu%20protocolo." target="_blank" rel="noopener">Quero descobrir o meu protocolo
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="acoes rev">
+      <a class="btn" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20descobrir%20o%20meu%20protocolo." target="_blank" rel="noopener">Quero descobrir o meu protocolo</a>
     </div>
   </div>
 </section>
 
-<!-- ═══ DOBRA 05 — VALOR: PROCEDIMENTOS ════════════════════════ -->
+<!-- ═══ DOBRA 05 — VALOR: procedimentos ═══════════════════════════ -->
 <section class="secao secao--creme" id="procedimentos">
   <div class="shell">
     <div class="intro">
-      <div>
-        <p class="rotulo">Procedimentos</p>
-        <h2>As ferramentas mudam.<br>O planejamento é o que<br>faz a diferença.</h2>
-      </div>
+      <p class="rotulo">Procedimentos</p>
+      <h2><span class="alt">As ferramentas mudam.</span>O planejamento é o que faz a diferença.</h2>
       <p class="intro__lead">Não existe um procedimento universal para todos os rostos. Cada técnica possui uma função dentro de uma estratégia maior.</p>
     </div>
 
-    <ul class="menu rev">
-      <li><h3>Toxina Botulínica</h3><p>Suavização de linhas e equilíbrio da ação muscular.</p></li>
-      <li><h3>Ácido Hialurônico</h3><p>Estrutura, projeção, definição e equilíbrio.</p></li>
-      <li><h3>Bioestimuladores de Colágeno</h3><p>Estímulo de colágeno, firmeza e qualidade da pele.</p></li>
-      <li><h3>Fios de Sustentação</h3><p>Auxílio no reposicionamento e definição do contorno.</p></li>
-      <li><h3>Tecnologias</h3><p>Recursos para firmeza, qualidade da pele e estímulo de colágeno.</p></li>
-      <li><h3>Protocolos de Pele</h3><p>Hidratação, textura, viço e qualidade cutânea.</p></li>
-    </ul>
+    <div class="procs rev">
+      <article class="proc"><h3>Toxina Botulínica</h3><p>Suavização de linhas e equilíbrio da ação muscular.</p></article>
+      <article class="proc"><h3>Ácido Hialurônico</h3><p>Estrutura, projeção, definição e equilíbrio.</p></article>
+      <article class="proc"><h3>Bioestimuladores</h3><p>Estímulo de colágeno, firmeza e qualidade da pele.</p></article>
+      <article class="proc"><h3>Fios de Sustentação</h3><p>Auxílio no reposicionamento e definição do contorno.</p></article>
+      <article class="proc"><h3>Tecnologias</h3><p>Recursos para firmeza, qualidade da pele e estímulo de colágeno.</p></article>
+      <article class="proc"><h3>Protocolos de Pele</h3><p>Hidratação, textura, viço e qualidade cutânea.</p></article>
+    </div>
 
-    <p class="fecho-frase rev" style="margin-top:clamp(3rem,5.5vw,4.25rem)">O procedimento não é definido antes da avaliação.<span>O rosto vem primeiro.</span></p>
+    <p class="remate rev">O procedimento não é definido antes da avaliação.<span>O rosto vem primeiro.</span></p>
   </div>
 </section>
 
-<!-- ═══ DOBRA 06 — CONEXÃO: THAINAN + DEPOIMENTOS ══════════════ -->
+<!-- ═══ DOBRA 06 — CONEXÃO: Thainan + depoimentos ═════════════════ -->
 <section class="secao" id="sobre">
   <div class="shell">
-    <div class="sobre">
+    <div class="intro">
+      <p class="rotulo">Thainan Matos</p>
+      <h2><span class="alt">Eu não acredito em transformar rostos.</span>Acredito em revelar o que eles têm de melhor.</h2>
+    </div>
+
+    <div class="sobre" style="margin-top:clamp(2.75rem,5vw,4rem)">
       <div class="sobre__foto" data-vazio="img/thainan-retrato.jpg">
         <img src="img/thainan-retrato.jpg" alt="Retrato profissional de Thainan Matos" loading="lazy">
       </div>
       <div>
-        <p class="rotulo">Thainan Matos</p>
-        <h2>Eu não acredito em<br>transformar rostos.<br>Acredito em revelar o<br>que eles têm de melhor.</h2>
-        <p class="lead" style="margin-top:1.7rem">Foi a partir dessa visão que construí minha forma de trabalhar com harmonização facial.</p>
+        <p class="lead">Foi a partir dessa visão que construí minha forma de trabalhar com harmonização facial.</p>
         <p>Ao longo da minha trajetória, percebi que muitas pacientes chegavam buscando corrigir uma região específica do rosto, quando, na verdade, o que incomodava estava na relação entre diferentes estruturas.</p>
         <p>Foi então que passei a olhar para o rosto de forma integrada. Não apenas para aquilo que precisa ser preenchido, mas para aquilo que precisa ser equilibrado.</p>
         <p>Hoje, cada avaliação começa com uma pergunta:</p>
-
         <p class="pergunta">“O que faz você sentir que deixou de se reconhecer?”</p>
-
         <p>A partir dessa resposta, construímos uma estratégia individualizada, respeitando seus traços, sua anatomia e aquilo que você deseja preservar.</p>
 
         <ul class="credenciais">
@@ -656,11 +630,9 @@ p:last-child{margin-bottom:0}
 
 <section class="secao secao--menta">
   <div class="shell">
-    <div class="intro intro--centro">
-      <div>
-        <p class="rotulo">Depoimentos</p>
-        <h2>O resultado também<br>aparece na forma como<br>você volta a se enxergar.</h2>
-      </div>
+    <div class="intro">
+      <p class="rotulo">Depoimentos</p>
+      <h2><span class="alt">O resultado também aparece</span>na forma como você volta a se enxergar.</h2>
     </div>
 
     <div class="prova rev">
@@ -680,18 +652,16 @@ p:last-child{margin-bottom:0}
       <p>“Parece que descansou.”</p>
     </div>
 
-    <p class="fecho-frase rev" style="margin-top:clamp(3rem,5.5vw,4.25rem);text-align:center;max-width:34ch;margin-inline:auto">Esse é o tipo de resultado que buscamos: aquele que melhora sua aparência sem apagar quem você é.</p>
+    <p class="remate rev">Um resultado que melhora sua aparência<span>sem apagar quem você é.</span></p>
   </div>
 </section>
 
-<!-- ═══ DOBRA 07 — CONVERSÃO: FAQ + CTA FINAL ══════════════════ -->
+<!-- ═══ DOBRA 07 — CONVERSÃO: FAQ + fecho ═════════════════════════ -->
 <section class="secao" id="faq">
   <div class="shell">
     <div class="intro">
-      <div>
-        <p class="rotulo">Dúvidas frequentes</p>
-        <h2>Antes de agendar,<br>algumas respostas.</h2>
-      </div>
+      <p class="rotulo">Dúvidas frequentes</p>
+      <h2><span class="alt">Antes de agendar,</span>algumas respostas.</h2>
     </div>
 
     <div class="faq rev">
@@ -718,12 +688,11 @@ p:last-child{margin-bottom:0}
 <section class="secao fecho">
   <div class="shell">
     <p class="rotulo">Primeiro passo</p>
-    <h2>Talvez você não queira<br>um rosto diferente.</h2>
+    <h2><span class="alt">Talvez você não queira</span>um rosto diferente.</h2>
     <p class="fecho__sub">Talvez só queira voltar a gostar do rosto que vê no espelho.</p>
-    <p class="lead" style="color:rgba(252,254,245,.76)">A avaliação é o primeiro passo para entender o que realmente pode ser melhorado — com naturalidade, estratégia e respeito à sua identidade.</p>
-    <div style="margin-top:2.6rem;display:flex;justify-content:center">
-      <a class="btn btn--claro" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20agendar%20minha%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar minha avaliação
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <p class="lead">A avaliação é o primeiro passo para entender o que realmente pode ser melhorado — com naturalidade, estratégia e respeito à sua identidade.</p>
+    <div class="acoes">
+      <a class="btn btn--claro" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20agendar%20minha%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar minha avaliação</a>
     </div>
     <p class="assinatura">Seu rosto. Seus traços. Uma estratégia pensada para você.</p>
   </div>
@@ -753,7 +722,7 @@ p:last-child{margin-bottom:0}
       </div>
       <div><h4>Navegar</h4><ul>
         <li><a href="#metodo">Método</a></li><li><a href="#resultados">Resultados</a></li>
-        <li><a href="#procedimentos">Procedimentos</a></li><li><a href="#sobre">Sobre</a></li>
+        <li><a href="#procedimentos">Procedimentos</a></li><li><a href="#sobre">Thainan Matos</a></li>
         <li><a href="#faq">Dúvidas</a></li></ul></div>
       <div><h4>Consultório</h4><ul>
         <li>[ENDEREÇO COMPLETO]<br>[BAIRRO] · [CIDADE/UF]</li>
@@ -768,14 +737,13 @@ p:last-child{margin-bottom:0}
   </div>
 </footer>
 
-<a class="flutua" id="flutua" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20agendar%20minha%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2a.5.5 0 0 0 0-.4c0-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.4a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1A4.9 4.9 0 0 0 8.3 15a11 11 0 0 0 4.2 3.3 4.7 4.7 0 0 0 2.9.4 2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.2-.2-.3-.4-.4Z"/></svg>
-  Falar no WhatsApp</a>
+<a class="flutua" id="flutua" href="https://wa.me/55[DDD][NUMERO]?text=Oi%2C%20Thainan.%20Quero%20agendar%20minha%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2a.5.5 0 0 0 0-.4c0-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.4a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1A4.9 4.9 0 0 0 8.3 15a11 11 0 0 0 4.2 3.3 4.7 4.7 0 0 0 2.9.4 2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.2-.2-.3-.4-.4Z"/></svg></a>
 
 <script>
 (function(){
   var nav=document.getElementById('nav'),hamb=document.getElementById('hamb'),flutua=document.getElementById('flutua');
-  function aoRolar(){var y=window.scrollY;nav.classList.toggle('fixo',y>30);flutua.classList.toggle('ver',y>window.innerHeight*.75)}
+  function aoRolar(){var y=window.scrollY;nav.classList.toggle('fixo',y>30);flutua.classList.toggle('ver',y>window.innerHeight*.6)}
   addEventListener('scroll',aoRolar,{passive:true});aoRolar();
 
   hamb.addEventListener('click',function(){
@@ -788,14 +756,65 @@ p:last-child{margin-bottom:0}
   });
 
   // estado vazio desenhado enquanto a foto nao existe no disco
-  document.querySelectorAll('.caso__moldura img,.prova img,.hero__retrato img,.sobre__foto img').forEach(function(img){
+  var hf=document.getElementById('heroFundo');
+  document.querySelectorAll('.caso__moldura img,.prova img,.sobre__foto img,.hero__fundo img').forEach(function(img){
     var box=img.parentElement;
-    function falhou(){box.classList.add('vazia');box.classList.remove('cheia')}
-    function veio(){box.classList.add('cheia');box.classList.remove('vazia')}
+    function falhou(){
+      if(box===hf){box.classList.add('vazio');img.style.display='none'}
+      else{box.classList.add('vazia');box.classList.remove('cheia')}
+    }
+    function veio(){
+      if(box===hf){box.classList.remove('vazio')}
+      else{box.classList.add('cheia');box.classList.remove('vazia')}
+    }
     img.addEventListener('error',falhou);
     img.addEventListener('load',veio);
     if(img.complete){img.naturalWidth?veio():falhou()}
   });
+
+  /* ── carrossel: rolagem contínua por scrollLeft ──────────────────
+     O trilho tem os 9 casos DUAS vezes. Ao passar da metade, o scroll
+     recua exatamente metade e o laço fica invisível. Como o movimento
+     é scrollLeft (e não animação CSS), as setas conseguem interferir. */
+  var via=document.getElementById('via'), trilho=document.getElementById('trilho');
+  if(via&&trilho){
+    var casos=trilho.querySelectorAll('.caso');
+    // duplica os 9 casos; as cópias saem do leitor de tela
+    casos.forEach(function(c){
+      var d=c.cloneNode(true);
+      d.setAttribute('aria-hidden','true');
+      d.querySelectorAll('img').forEach(function(i){i.removeAttribute('loading')});
+      trilho.appendChild(d);
+    });
+    var meta=0, pausa=0, parado=false;
+    function medir(){meta=trilho.scrollWidth/2}
+    medir(); addEventListener('resize',medir);
+
+    var lento=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function quadro(){
+      if(!lento&&!parado&&!pausa&&meta>0){
+        via.scrollLeft+=.45;
+        if(via.scrollLeft>=meta)via.scrollLeft-=meta;
+      }
+      if(pausa)pausa--;
+      requestAnimationFrame(quadro);
+    }
+    requestAnimationFrame(quadro);
+
+    var carr=via.closest('.carrossel');
+    ['mouseenter','focusin','touchstart'].forEach(function(e){carr.addEventListener(e,function(){parado=true},{passive:true})});
+    ['mouseleave','focusout','touchend'].forEach(function(e){carr.addEventListener(e,function(){parado=false},{passive:true})});
+
+    function passo(dir){
+      var c=casos[0].getBoundingClientRect().width,
+          vao=parseFloat(getComputedStyle(trilho).gap)||16;
+      pausa=48;                                   // segura o avanço automático durante o scroll suave
+      if(dir<0&&via.scrollLeft<c)via.scrollLeft+=meta;   // evita bater na parede à esquerda
+      via.scrollBy({left:dir*(c+vao),behavior:'smooth'});
+    }
+    document.getElementById('setaAnt').addEventListener('click',function(){passo(-1)});
+    document.getElementById('setaProx').addEventListener('click',function(){passo(1)});
+  }
 
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){
     var obs=new IntersectionObserver(function(es){es.forEach(function(e){

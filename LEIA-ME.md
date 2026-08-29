@@ -92,7 +92,33 @@ sed -i '' 's/\[DDD\]/11/g; s/\[NUMERO\]/999999999/g; s|\[CIDADE/UF\]|São Paulo/
 
 ---
 
-## 4. Estrutura — 7 dobras
+## 4. Disposição dos elementos
+
+Modelada sobre a arquitetura visual do site de referência:
+
+| Elemento | Regra |
+|---|---|
+| Nav | Marca à esquerda, links serifados à direita. **Sem botão no topo.** |
+| Hero | Foto sangrando no fundo inteiro; texto sobreposto **à esquerda**, sobre véu em degradê |
+| Headlines | **Bicolores**: 1ª linha em `--sutil` (musgo médio), 2ª em `--tinta` (escuro). Marcação: `<span class="alt">` |
+| Subtítulo do hero | Serifada itálica em `--sutil` |
+| Cadência | 2 linhas itálicas logo antes do botão |
+| Botão do hero | Sólido, caixa alta espaçada, **alinhado à esquerda** (`.acoes--esq`) |
+| Demais seções | **Tudo centralizado** — rótulo, título, lead, remate e botão |
+| Medos | Grade 2×2 de caixas com borda fina, texto centralizado |
+| Remates | `.remate` — serifada itálica centralizada, 2ª linha em tom mais claro |
+| Carrossel | Setas ‹ › circulares nas laterais |
+| WhatsApp | Bolha circular verde no canto inferior direito |
+
+**Sobre a bicolor:** a referência usa dourado na 1ª linha. A paleta travada não tem
+cor de destaque com contraste legível — os 5 tons têm luminância ~95. A bicolor foi
+resolvida de forma **tonal** dentro da própria família: `#626b55` (5,0:1) na linha de
+destaque e `#232719` (15,9:1) na principal. Mesmo efeito de hierarquia, sem importar
+um matiz estranho à paleta.
+
+---
+
+## 5. Estrutura — 7 dobras
 
 A página segue uma escada de decisão. Cada dobra resolve uma objeção antes da
 seguinte aparecer. Se for editar, mantenha a peça na função dela:
@@ -119,7 +145,7 @@ Decisão pendente do Felipe.
 
 ---
 
-## 5. Sistema visual
+## 6. Sistema visual
 
 **Paleta (travada pelo cliente)**
 `#fcfef5` porcelana · `#e9ffe1` menta · `#cdcfb7` sage · `#d6e6c3` folha · `#fafbe3` creme
@@ -137,7 +163,7 @@ para fugir do par Playfair/Inter, que já é padrão no nicho.
 
 ---
 
-## 6. Pendências que travam a publicação
+## 7. Pendências que travam a publicação
 
 1. **Antes-e-depois em publicidade** é vedado pelo CFM (Res. 2.336/2023) e pelo CFO.
    A regra muda conforme o conselho da Thainan. Decidir antes de subir.
