@@ -7,6 +7,12 @@ Duplo clique já abre. Deploy: joga a pasta inteira em qualquer host estático.
 
 ## 1. As 9 fotos — é isso que falta para o site parar de parecer vazio
 
+> **JÁ INSTALADAS.** As 9 fotos estão em `img/casos/` e no ar. `caso-02` e `caso-08`
+> vieram de originais quadrados e tiveram a marca d'água **cortada no próprio arquivo**
+> (topo + laterais, para continuarem quadrados) — por isso estão com `data-corte="nenhum"`.
+> Não aplique recorte nelas de novo. As outras sete são originais intactos, com o
+> recorte feito no CSS via `data-corte`.
+
 ### Jeito rápido (recomendado)
 Jogue as 9 fotos numa pasta qualquer — nomes não importam, só a **ordem alfabética**
 tem que bater com a tabela abaixo (renomear para `1.jpg`…`9.jpg` resolve). Depois:
