@@ -7,6 +7,19 @@ Duplo clique já abre. Deploy: joga a pasta inteira em qualquer host estático.
 
 ## 1. As 9 fotos — é isso que falta para o site parar de parecer vazio
 
+### Jeito rápido (recomendado)
+Jogue as 9 fotos numa pasta qualquer — nomes não importam, só a **ordem alfabética**
+tem que bater com a tabela abaixo (renomear para `1.jpg`…`9.jpg` resolve). Depois:
+
+```bash
+./_instalar-fotos.sh ~/Desktop/fotos-thainan
+```
+
+Ele converte para JPG, renomeia para `caso-01`…`caso-09`, instala em `img/casos/`
+e imprime o que virou o quê, para você conferir. Se alguma trocou de lugar, é só
+renomear os dois arquivos entre si e rodar de novo.
+
+### Jeito manual
 Salvar em `img/casos/` com estes nomes exatos. **A ordem importa**: o
 enquadramento que joga a marca d'água para fora de quadro já está calibrado
 arquivo por arquivo.
