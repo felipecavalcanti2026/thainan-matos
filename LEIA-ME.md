@@ -80,26 +80,30 @@ sed -i '' 's/\[DDD\]/11/g; s/\[NUMERO\]/999999999/g; s|\[CIDADE/UF\]|São Paulo/
 
 ---
 
-## 4. Arco narrativo da copy
+## 4. Estrutura — 7 dobras
 
-A copy não é uma sequência de argumentos — é uma história com protagonista e virada.
-Se for editar qualquer bloco, mantenha a peça no lugar dela no arco:
+A página segue uma escada de decisão. Cada dobra resolve uma objeção antes da
+seguinte aparecer. Se for editar, mantenha a peça na função dela:
 
-| Bloco | Função narrativa |
-|---|---|
-| Hero — "uma foto de lado" | Incidente. A cena que gera a mensagem no WhatsApp. |
-| "Aí começam os meses de pesquisa" | Ato I. O que ela faz depois, e as 4 vozes internas. |
-| "Anotei essas quatro frases…" | **A virada.** Thainan entra na história pela primeira vez. |
-| Nove rostos | Prova. Não é portfólio — são pessoas com a mesma cena de abertura. |
-| "O que acontece na primeira hora" | Ato II. A consulta narrada em 3 tempos, em 1ª pessoa. |
-| Duas histórias que se repetem | Os protocolos como falas recorrentes de paciente, não como técnica. |
-| "Nada disso é o tratamento" | Desarma o cardápio: ferramenta ≠ tratamento. |
-| A semana seguinte | Clímax invertido: o resultado é alguém não perceber. |
-| "Eu comecei tratando queixa" | Virada da própria Thainan (story of self). |
-| "Comece pela conversa" | O convite. Fecha o arco de volta na foto, no rodapé. |
+| # | Dobra | Função | O que o leitor pensa ao sair |
+|---|---|---|---|
+| 01 | Hero | Desejo | "Quero ficar mais bonita" |
+| 02 | Medos + 3 pilares | Dor | "Tenho medo de ficar artificial" |
+| 03 | Método Leitura Facial + 4 etapas | Autoridade | "Essa profissional pensa diferente / ela tem um método" |
+| 04 | Antes-depois + protocolos | Prova | "Os resultados comprovam" |
+| 05 | Procedimentos | Valor | "As ferramentas são meio, não fim" |
+| 06 | Thainan + depoimentos | Conexão | "Entendi quem é a profissional" |
+| 07 | FAQ + CTA final | Conversão | "Não tenho mais objeções. Vou agendar." |
 
-Duas regras para não quebrar o arco: **a foto de lado abre e fecha o site**, e
-**a Thainan só aparece depois que a dor já foi nomeada** — nunca antes.
+Três CTAs intermediários (dobras 01, 03, 04) mais o final. Todos apontam para o
+mesmo WhatsApp, com mensagens pré-preenchidas diferentes — dá para saber de qual
+dobra o lead veio pelo texto que chega.
+
+### ⚠️ Colisão de headline a resolver
+"Beleza que respeita quem você é" e os pilares Naturalidade / Precisão / Elegância
+são **idênticos aos do site da Dra. Liz Pretto**, que também é cliente da casa.
+Dois clientes com a mesma headline é um problema que aparece na primeira comparação.
+Decisão pendente do Felipe.
 
 ---
 
