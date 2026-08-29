@@ -26,6 +26,18 @@ arquivo por arquivo.
 Enquanto os arquivos não existirem, cada card mostra o monograma TM e o nome do
 arquivo que falta. É placeholder desenhado, não erro — a página não quebra.
 
+### Carrossel
+As fotos ficam numa faixa contínua que desliza sozinha, sangrando de ponta a ponta.
+O trilho carrega os 9 casos **duas vezes**: a animação desloca exatamente a largura
+da primeira leva (9 cartões + 9 vãos), então a emenda cai no mesmo pixel e o laço
+fica invisível. A segunda leva é decorativa — `aria-hidden="true"`, fora do leitor de tela.
+
+- Velocidade: `animation:desliza 64s` em `.carrossel__trilho`. Menor = mais rápido.
+- Pausa sozinho no hover e no foco por teclado.
+- Em `prefers-reduced-motion`, vira faixa rolável à mão com scroll-snap e as cópias somem.
+- Se trocar a quantidade de fotos, ajuste o `9` do comentário e mantenha a duplicação:
+  o cálculo `-50% - vao/2` só fecha se as duas levas forem idênticas.
+
 ### Como o corte funciona
 As molduras são todas 1:1. Como as fotos têm largura ≤ altura, `object-fit:cover`
 numa moldura quadrada **só corta na vertical** — as laterais ficam intactas, que é

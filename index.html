@@ -177,9 +177,21 @@ p:last-child{margin-bottom:0}
    ficam intactas, essencial num antes/depois lado a lado.
    data-corte decide para qual ponta vai a sobra: é assim que a
    marca d'água sai de quadro.                                     */
-.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px);
-  margin-top:clamp(2.75rem,5vw,3.75rem)}
-.caso{margin:0;display:flex;flex-direction:column}
+/* Faixa deslizante contínua. O trilho carrega os 9 casos DUAS vezes;
+   a animação desloca exatamente a largura da primeira leva (9 cartões
+   + 9 vãos), então a emenda cai no mesmo pixel e o laço fica invisível.
+   -50% = 9 cartões + 8,5 vãos, daí o meio vão extra no calc.          */
+.carrossel{--vao:clamp(14px,1.6vw,22px);--cartao:clamp(232px,23vw,320px);
+  position:relative;margin-top:clamp(2.75rem,5vw,3.75rem);overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.carrossel__trilho{display:flex;gap:var(--vao);width:max-content;
+  animation:desliza 64s linear infinite;will-change:transform}
+.carrossel:hover .carrossel__trilho,
+.carrossel:focus-within .carrossel__trilho{animation-play-state:paused}
+@keyframes desliza{from{transform:translate3d(0,0,0)}
+                   to{transform:translate3d(calc(-50% - var(--vao)/2),0,0)}}
+.caso{margin:0;display:flex;flex-direction:column;flex:none;width:var(--cartao)}
 .caso__moldura{position:relative;overflow:hidden;aspect-ratio:1;
   background:var(--folha) var(--mono) no-repeat center/86px;border-radius:var(--r)}
 .caso__moldura img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;
@@ -332,7 +344,6 @@ p:last-child{margin-bottom:0}
   .etapa:nth-child(3){border-left:0}
   .etapa:nth-child(n+3){border-top:1px solid var(--linha)}
   .etapa:nth-child(3)::after{display:none}
-  .galeria{grid-template-columns:repeat(2,1fr)}
   .prova{grid-template-columns:repeat(3,1fr)}
   .frases{grid-template-columns:1fr}
   .menu li{grid-template-columns:1fr;gap:.45rem}
@@ -342,7 +353,6 @@ p:last-child{margin-bottom:0}
 }
 @media (max-width:560px){
   body{font-size:16px}
-  .galeria{grid-template-columns:1fr;gap:16px}
   .prova{grid-template-columns:repeat(2,1fr)}
   .etapas{grid-template-columns:1fr}
   .etapa+.etapa{border-left:0;border-top:1px solid var(--linha)}
@@ -352,6 +362,11 @@ p:last-child{margin-bottom:0}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
+  .carrossel{overflow-x:auto;-webkit-mask-image:none;mask-image:none;
+    scroll-snap-type:x mandatory;padding-bottom:.5rem}
+  .carrossel__trilho{animation:none}
+  .caso{scroll-snap-align:center}
+  .caso[aria-hidden="true"]{display:none}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   .rev{opacity:1;transform:none}
 }
@@ -494,7 +509,10 @@ p:last-child{margin-bottom:0}
 
     <!-- data-corte: para que ponta vai a sobra do enquadramento (tira a marca d'água de quadro)
          data-zoom="sim": foto de origem quadrada, precisa de folga extra -->
-    <div class="galeria rev">
+    </div><!-- fecha .shell: a faixa sangra de ponta a ponta -->
+
+  <div class="carrossel rev">
+    <div class="carrossel__trilho">
       <figure class="caso"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-01.jpg">
         <img src="img/casos/caso-01.jpg" alt="Antes e depois de harmonização facial: perfil com lábios e mento redefinidos" loading="lazy"></div>
         <figcaption><b>Perfil e lábios</b><span>Antes · Depois</span></figcaption></figure>
@@ -522,7 +540,39 @@ p:last-child{margin-bottom:0}
       <figure class="caso"><div class="caso__moldura" data-corte="base" data-vazio="caso-09.jpg">
         <img src="img/casos/caso-09.jpg" alt="Antes e depois de harmonização facial: definição de contorno preservando a expressão" loading="lazy"></div>
         <figcaption><b>Definição de contorno</b><span>Antes · Depois</span></figcaption></figure>
+
+      <!-- segunda leva: só para fechar o laço sem emenda -->
+      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-01.jpg">
+        <img src="img/casos/caso-01.jpg" alt="Antes e depois de harmonização facial: perfil com lábios e mento redefinidos"></div>
+        <figcaption><b>Perfil e lábios</b><span>Antes · Depois</span></figcaption></figure>
+      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="topo" data-zoom="sim" data-vazio="caso-02.jpg">
+        <img src="img/casos/caso-02.jpg" alt="Antes e depois de harmonização facial: definição do terço inferior"></div>
+        <figcaption><b>Terço inferior</b><span>Antes · Depois</span></figcaption></figure>
+      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="topo" data-vazio="caso-03.jpg">
+        <img src="img/casos/caso-03.jpg" alt="Antes e depois de harmonização facial: contorno mandibular e projeção de mento"></div>
+        <figcaption><b>Contorno mandibular</b><span>Antes · Depois</span></figcaption></figure>
+      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="topo" data-vazio="caso-04.jpg">
+        <img src="img/casos/caso-04.jpg" alt="Antes e depois de harmonização facial: sustentação do terço médio"></div>
+        <figcaption><b>Terço médio</b><span>Antes · Depois</span></figcaption></figure>
+      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="ambos" data-vazio="caso-05.jpg">
+        <img src="img/casos/caso-05.jpg" alt="Antes e depois de harmonização facial: suporte periorbital e leveza do olhar"></div>
+        <figcaption><b>Suporte do olhar</b><span>Antes · Depois</span></figcaption></figure>
+      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="ambos" data-vazio="caso-06.jpg">
+        <img src="img/casos/caso-06.jpg" alt="Antes e depois de harmonização facial: perfil alinhado entre nariz, lábios e mento"></div>
+        <figcaption><b>Linha de perfil</b><span>Antes · Depois</span></figcaption></figure>
+      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="nenhum" data-vazio="caso-07.jpg">
+        <img src="img/casos/caso-07.jpg" alt="Antes e depois de harmonização facial: refinamento sutil preservando os traços"></div>
+        <figcaption><b>Refinamento sutil</b><span>Antes · Depois</span></figcaption></figure>
+      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="topo" data-zoom="sim" data-vazio="caso-08.jpg">
+        <img src="img/casos/caso-08.jpg" alt="Antes e depois de harmonização facial: volume labial equilibrado e ângulo definido"></div>
+        <figcaption><b>Lábios e ângulo</b><span>Antes · Depois</span></figcaption></figure>
+      <figure class="caso" aria-hidden="true"><div class="caso__moldura" data-corte="base" data-vazio="caso-09.jpg">
+        <img src="img/casos/caso-09.jpg" alt="Antes e depois de harmonização facial: definição de contorno preservando a expressão"></div>
+        <figcaption><b>Definição de contorno</b><span>Antes · Depois</span></figcaption></figure>
     </div>
+  </div>
+
+  <div class="shell">
 
     <p class="nota">Registros feitos em consultório, sem edição de traço ou retoque de contorno. Resultados individuais: cada rosto responde de forma diferente conforme anatomia, qualidade de pele, idade e histórico de procedimentos. Imagens publicadas com autorização por escrito das pacientes.</p>
 
