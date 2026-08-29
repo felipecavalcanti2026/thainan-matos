@@ -69,7 +69,7 @@ Escreve em `img/casos/limpas/`. Depois substitua os originais e troque todos os
 
 Busque no `index.html` por colchetes:
 
-- `[DDD]` e `[NUMERO]` — WhatsApp (8 links: nav, hero, galeria, fecho, rodapé, flutuante)
+- ~~WhatsApp~~ — **preenchido**: `+55 73 98104-6695` nos 7 links (hero, método, resultados, fecho, rodapé ×2, flutuante)
 - `[CIDADE/UF]` — rótulo do hero e rodapé
 - `[X]` — anos de atuação (selo sobre o retrato)
 - `[PRIMEIRO PARÁGRAFO]` e `[SEGUNDO PARÁGRAFO]` — seção Sobre. **Não é currículo.**
@@ -81,8 +81,12 @@ Busque no `index.html` por colchetes:
 - `[USUARIO]` — Instagram
 
 ```bash
-sed -i '' 's/\[DDD\]/11/g; s/\[NUMERO\]/999999999/g; s|\[CIDADE/UF\]|São Paulo/SP|g' index.html
+sed -i '' 's|\[CIDADE/UF\]|Itabuna/BA|g' index.html
 ```
+
+> **Duas praças.** A bio do Instagram indica atendimento em **Itabuna-BA e São Paulo-SP**.
+> O site tem um `[CIDADE/UF]` só. Definir se vira "Itabuna-BA · São Paulo-SP" no hero,
+> ou se cada praça ganha bloco próprio no rodapé com agenda separada.
 
 ## 3. Outras imagens (opcionais — sem elas o bloco vira placeholder com monograma)
 - `img/retrato-hero.jpg` — 4:5, Thainan em atendimento
