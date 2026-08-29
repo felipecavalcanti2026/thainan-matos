@@ -343,21 +343,22 @@ p:last-child{margin-bottom:0}
 .rev.no-ar{opacity:1;transform:none}
 
 @media (max-width:1080px){
-  .hero{min-height:0;padding-bottom:clamp(4rem,7vw,6rem)}
-  .hero__texto{max-width:100%}
-  /* No estreito a foto sai de tras do texto e vira bloco proprio, abaixo
-     dele: retrato de estudio tem que ser visto, nao lavado por um veu.   */
-  .hero{flex-direction:column;align-items:stretch;
+  /* No estreito a foto sai de tras do texto e vira bloco proprio abaixo
+     dele — retrato de estudio tem que ser visto, nao lavado por um veu.
+     Ela sangra de ponta a ponta e a curva volta por cima da base, para a
+     dobra desaguar na proxima secao em vez de terminar num corte seco.  */
+  .hero{min-height:0;padding-bottom:0;flex-direction:column;align-items:stretch;
     background:radial-gradient(120% 60% at 82% 4%,var(--menta) 0%,transparent 62%),
                radial-gradient(90% 50% at 4% 98%,var(--creme) 0%,transparent 66%),var(--porcelana)}
+  .hero__texto{max-width:100%}
   .hero>.shell{order:1}
-  .hero__fundo{position:static;order:2;background:none;
-    display:flex;justify-content:center;margin-top:clamp(2rem,6vw,3rem)}
-  .hero__fundo img{position:static;width:min(88%,360px);height:auto;
-    -webkit-mask-image:none;mask-image:none;border-radius:var(--r)}
+  .hero__fundo{position:static;order:2;background:none;width:100%;
+    margin-top:clamp(1.75rem,5vw,2.75rem);line-height:0}
+  .hero__fundo img{position:static;display:block;width:100%;height:auto;
+    -webkit-mask-image:none;mask-image:none;border-radius:0}
   .hero__fundo::after{display:none}
-  .hero__fundo.vazio::before{position:static;transform:none;padding:3rem 0}
-  .hero__curva{display:none}
+  .hero__fundo.vazio::before{position:static;transform:none;padding:3rem 0;line-height:1.6}
+  .hero__curva{display:block;height:clamp(38px,9vw,58px)}
   .procs{grid-template-columns:repeat(2,1fr)}
   .sobre{grid-template-columns:1fr}
   .sobre__foto{max-width:380px;margin-inline:auto}
@@ -461,39 +462,6 @@ p:last-child{margin-bottom:0}
 </section>
 
 <!-- ═══ DOBRA 02 — DOR: medos em grade 2×2 + pilares ═══════════════ -->
-<section class="secao secao--creme">
-  <div class="shell">
-    <div class="intro">
-      <p class="rotulo">Antes de decidir</p>
-      <h2><span class="alt">Harmonização facial</span>não precisa ter cara de harmonização.</h2>
-      <p class="intro__lead">Talvez você já tenha pensado em fazer um procedimento, mas desistiu por medo de:</p>
-    </div>
-
-    <div class="medos-grade rev">
-      <div class="medo">Ficar com o rosto artificial</div>
-      <div class="medo">Perder suas características naturais</div>
-      <div class="medo">Exagerar no preenchimento</div>
-      <div class="medo">Não se reconhecer depois</div>
-      <div class="medo">Ter um resultado bonito, mas que não combina com você</div>
-      <div class="medo">Fazer algo sem ter como voltar atrás</div>
-    </div>
-
-    <div class="apoio-centro rev">
-      <p>E esse receio faz sentido.</p>
-      <p>Uma boa harmonização não começa escolhendo o que aplicar. Começa entendendo o seu rosto.</p>
-    </div>
-
-    <div class="pilares3 rev">
-      <article class="pilar"><h3>Naturalidade</h3><p>Preservar seus traços e aquilo que faz você ser você.</p></article>
-      <article class="pilar"><h3>Precisão</h3><p>Entender proporções, estruturas e necessidades antes de qualquer procedimento.</p></article>
-      <article class="pilar"><h3>Elegância</h3><p>Buscar um resultado sutil, equilibrado e sofisticado.</p></article>
-    </div>
-
-    <p class="remate rev">Menos excesso. Mais precisão.<span>Menos padrão. Mais identidade.</span></p>
-  </div>
-</section>
-
-<!-- ═══ DOBRA 03 — AUTORIDADE: método + avaliação ══════════════════ -->
 <section class="secao secao--menta" id="metodo">
   <div class="shell">
     <div class="intro">
@@ -501,6 +469,16 @@ p:last-child{margin-bottom:0}
       <h2><span class="alt">Antes de transformar o rosto,</span>é preciso saber enxergá-lo.</h2>
       <p class="intro__lead">A diferença não está apenas na técnica. Está em saber onde mexer, onde não mexer e qual é o momento certo para cada decisão.</p>
     </div>
+
+    <article class="codigo rev">
+      <p class="codigo__selo">Protocolo autoral</p>
+      <h3>Código da Juventude</h3>
+      <p class="codigo__lead">Rejuvenescer não deveria significar deixar de parecer você.</p>
+      <div class="codigo__texto">
+        <p>O tempo transforma o rosto, altera proporções, reduz sustentação e modifica detalhes que, juntos, podem fazer sua imagem parecer diferente de quem você ainda se reconhece ser. O Código da Juventude nasce para preservar essa identidade: uma abordagem que entende o rosto como um conjunto, respeita seus traços naturais e atua nos pontos certos para recuperar equilíbrio, sustentação e frescor.</p>
+        <p class="codigo__marco">Porque o verdadeiro rejuvenescimento não cria um novo rosto — devolve ao seu rosto a juventude que o tempo levou, sem apagar quem você é.</p>
+      </div>
+    </article>
 
     <div class="tempos rev">
       <article class="tempo"><span class="tempo__n">01</span><h3>Ler</h3>
@@ -578,15 +556,6 @@ p:last-child{margin-bottom:0}
   <div class="shell">
     <p class="nota">Registros feitos em consultório, sem edição de traço ou retoque de contorno. Resultados individuais: cada rosto responde de forma diferente conforme anatomia, qualidade de pele, idade e histórico de procedimentos. Imagens publicadas com autorização por escrito das pacientes.</p>
 
-    <article class="codigo rev">
-      <p class="codigo__selo">Protocolo autoral</p>
-      <h3>Código da Juventude</h3>
-      <p class="codigo__lead">Rejuvenescer não deveria significar deixar de parecer você.</p>
-      <div class="codigo__texto">
-        <p>O tempo transforma o rosto, altera proporções, reduz sustentação e modifica detalhes que, juntos, podem fazer sua imagem parecer diferente de quem você ainda se reconhece ser. O Código da Juventude nasce para preservar essa identidade: uma abordagem que entende o rosto como um conjunto, respeita seus traços naturais e atua nos pontos certos para recuperar equilíbrio, sustentação e frescor.</p>
-        <p class="codigo__marco">Porque o verdadeiro rejuvenescimento não cria um novo rosto — devolve ao seu rosto a juventude que o tempo levou, sem apagar quem você é.</p>
-      </div>
-    </article>
 
     <div class="acoes rev">
       <a class="btn" href="https://wa.me/5573981046695?text=Ol%C3%A1%21%20Vim%20do%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Quero descobrir o meu protocolo</a>
@@ -595,7 +564,40 @@ p:last-child{margin-bottom:0}
 </section>
 
 <!-- ═══ DOBRA 05 — VALOR: procedimentos ═══════════════════════════ -->
-<section class="secao secao--creme" id="procedimentos">
+<section class="secao secao--creme">
+  <div class="shell">
+    <div class="intro">
+      <p class="rotulo">Antes de decidir</p>
+      <h2><span class="alt">Harmonização facial</span>não precisa ter cara de harmonização.</h2>
+      <p class="intro__lead">Talvez você já tenha pensado em fazer um procedimento, mas desistiu por medo de:</p>
+    </div>
+
+    <div class="medos-grade rev">
+      <div class="medo">Ficar com o rosto artificial</div>
+      <div class="medo">Perder suas características naturais</div>
+      <div class="medo">Exagerar no preenchimento</div>
+      <div class="medo">Não se reconhecer depois</div>
+      <div class="medo">Ter um resultado bonito, mas que não combina com você</div>
+      <div class="medo">Fazer algo sem ter como voltar atrás</div>
+    </div>
+
+    <div class="apoio-centro rev">
+      <p>E esse receio faz sentido.</p>
+      <p>Uma boa harmonização não começa escolhendo o que aplicar. Começa entendendo o seu rosto.</p>
+    </div>
+
+    <div class="pilares3 rev">
+      <article class="pilar"><h3>Naturalidade</h3><p>Preservar seus traços e aquilo que faz você ser você.</p></article>
+      <article class="pilar"><h3>Precisão</h3><p>Entender proporções, estruturas e necessidades antes de qualquer procedimento.</p></article>
+      <article class="pilar"><h3>Elegância</h3><p>Buscar um resultado sutil, equilibrado e sofisticado.</p></article>
+    </div>
+
+    <p class="remate rev">Menos excesso. Mais precisão.<span>Menos padrão. Mais identidade.</span></p>
+  </div>
+</section>
+
+<!-- ═══ DOBRA 03 — AUTORIDADE: método + avaliação ══════════════════ -->
+<section class="secao secao--menta" id="procedimentos">
   <div class="shell">
     <div class="intro">
       <p class="rotulo">Procedimentos</p>
@@ -649,7 +651,7 @@ p:last-child{margin-bottom:0}
   </div>
 </section>
 
-<section class="secao secao--menta">
+<section class="secao secao--creme">
   <div class="shell">
     <div class="intro">
       <p class="rotulo">Depoimentos</p>
