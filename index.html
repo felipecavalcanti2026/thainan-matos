@@ -237,15 +237,16 @@ p:last-child{margin-bottom:0}
 .nota{margin:2.4rem auto 0;font-size:.81rem;line-height:1.62;color:var(--sutil);
   max-width:70ch;text-align:center}
 
-.protocolos2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,2.5rem);
-  margin-top:clamp(2.75rem,5vw,4rem)}
-.proto{background:rgba(252,254,245,.6);border:1px solid var(--linha);
-  padding:clamp(1.9rem,3vw,2.7rem);border-radius:var(--r);text-align:center}
-.proto__selo{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sutil);margin-bottom:.85rem}
-.proto h3{margin-bottom:1.1rem}
-.proto__frase{font-family:var(--serif);font-style:italic;font-size:1.28rem;
-  line-height:1.34;color:var(--sutil);margin-bottom:1.1rem}
-.proto p:last-child{font-size:.96rem;max-width:42ch;margin-inline:auto}
+.codigo{margin-top:clamp(2.75rem,5vw,4rem);padding:clamp(2rem,4vw,3.4rem);
+  background:rgba(252,254,245,.6);border:1px solid var(--linha);border-radius:var(--r)}
+.codigo__selo{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--sutil);text-align:center;margin-bottom:.9rem}
+.codigo h3{text-align:center;margin-bottom:1.8rem;font-size:clamp(1.7rem,3vw,2.4rem)}
+.codigo__texto{max-width:64ch;margin-inline:auto}
+.codigo__texto p{font-size:1rem;line-height:1.76}
+.codigo__marco{font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.22rem,2.2vw,1.58rem);line-height:1.36;color:var(--tinta);
+  border-left:2px solid var(--sage);padding-left:1.3rem;margin:1.7rem 0}
 
 /* ══ DOBRA 05 — PROCEDIMENTOS: grade centralizada ════════════════ */
 .procs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linha);
@@ -353,7 +354,6 @@ p:last-child{margin-bottom:0}
   .hero__fundo::after{display:none}
   .hero__fundo.vazio::before{position:static;transform:none;padding:3rem 0}
   .hero__curva{display:none}
-  .protocolos2{grid-template-columns:1fr}
   .procs{grid-template-columns:repeat(2,1fr)}
   .sobre{grid-template-columns:1fr}
   .sobre__foto{max-width:380px;margin-inline:auto}
@@ -493,7 +493,7 @@ p:last-child{margin-bottom:0}
 <section class="secao secao--menta" id="metodo">
   <div class="shell">
     <div class="intro">
-      <p class="rotulo">Método Leitura Facial</p>
+      <p class="rotulo">O método · Código da Juventude</p>
       <h2><span class="alt">Antes de transformar o rosto,</span>é preciso saber enxergá-lo.</h2>
       <p class="intro__lead">A diferença não está apenas na técnica. Está em saber onde mexer, onde não mexer e qual é o momento certo para cada decisão.</p>
     </div>
@@ -574,20 +574,17 @@ p:last-child{margin-bottom:0}
   <div class="shell">
     <p class="nota">Registros feitos em consultório, sem edição de traço ou retoque de contorno. Resultados individuais: cada rosto responde de forma diferente conforme anatomia, qualidade de pele, idade e histórico de procedimentos. Imagens publicadas com autorização por escrito das pacientes.</p>
 
-    <div class="protocolos2 rev">
-      <article class="proto">
-        <p class="proto__selo">Protocolo</p>
-        <h3>Perfil</h3>
-        <p class="proto__frase">Um perfil mais equilibrado começa pela relação entre as estruturas.</p>
-        <p>Trabalhamos projeção, alinhamento e proporção entre nariz, lábios e mento para criar um perfil mais harmônico.</p>
-      </article>
-      <article class="proto">
-        <p class="proto__selo">Protocolo</p>
-        <h3>Sustentação</h3>
-        <p class="proto__frase">Mais sustentação. Menos peso.</p>
-        <p>Uma estratégia para recuperar estrutura, definição e equilíbrio do rosto, respeitando as características individuais e a evolução natural.</p>
-      </article>
-    </div>
+    <article class="codigo rev">
+      <p class="codigo__selo">O método por dentro</p>
+      <h3>Todo rosto tem uma ordem própria.</h3>
+      <div class="codigo__texto">
+        <p>A linha que vai do nariz ao mento. O apoio que sustenta o terço médio. O ângulo que desenha o contorno. Quando essas estruturas conversam entre si, o rosto parece descansado mesmo num dia de pouco sono.</p>
+        <p>O tempo desorganiza essa ordem — e quase nunca de uma vez. O rosto perde apoio num ponto e todo o resto se acomoda em volta dessa perda. A bochecha escorrega, o contorno se dissolve, o perfil deixa de fechar. Cada queixa chega ao consultório como se fosse um problema isolado. Quase nunca é.</p>
+        <p>É essa ordem que o <em>Código da Juventude</em> reorganiza. Nariz, lábio e mento eu leio como uma linha só, nunca como três procedimentos separados: tratados em separado, cada um fica bonito sozinho e o conjunto fica estranho. Terço médio e contorno eu trato como sustentação, não como volume — porque o terço inferior não engorda, ele desce, e preencher de frente só deixa o rosto mais largo.</p>
+        <p class="codigo__marco">Devolver apoio na ordem certa muda mais um rosto do que acrescentar volume em qualquer ordem.</p>
+        <p>Quando a ordem volta, o resultado não se apresenta como procedimento. Ele se apresenta como descanso.</p>
+      </div>
+    </article>
 
     <div class="acoes rev">
       <a class="btn" href="https://wa.me/5573981046695?text=Ol%C3%A1%21%20Vim%20do%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Quero descobrir o meu protocolo</a>

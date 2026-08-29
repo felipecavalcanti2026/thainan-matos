@@ -1,7 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" rx="26" fill="#232719"/>
-  <g fill="#fcfef5" text-anchor="middle" font-family="Georgia,'Times New Roman',serif">
-    <text x="100" y="145" font-size="128" letter-spacing="-3">M</text>
-    <text x="100" y="145" font-size="150">T</text>
+  <!-- Sem fundo: o monograma fica preto sobre a aba clara.
+       Em navegador no tema escuro ele inverte sozinho, senao sumiria. -->
+  <style>
+    text{fill:#232719}
+    @media (prefers-color-scheme: dark){ text{fill:#fcfef5} }
+  </style>
+  <g text-anchor="middle" font-family="Georgia,'Times New Roman',serif">
+    <text x="100" y="150" font-size="142" letter-spacing="-3">M</text>
+    <text x="100" y="150" font-size="168">T</text>
   </g>
 </svg>
