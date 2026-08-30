@@ -2,296 +2,616 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Avaliação Facial — Thainan Matos</title>
-<meta name="description" content="Responda 7 perguntas rápidas e a Thainan organiza sua avaliação de harmonização facial.">
+<meta name="description" content="Responda algumas perguntas rápidas e organizamos o seu atendimento com Thainan Matos.">
 <meta property="og:title" content="Avaliação Facial — Thainan Matos">
-<meta property="og:description" content="Sete perguntas rápidas. Menos de um minuto.">
+<meta property="og:description" content="Leva menos de 1 minuto. Responda e agende sua avaliação individualizada.">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#fcfef5">
+<!-- RASCUNHO: impede indexacao enquanto houver placeholder.
+     REMOVA esta linha antes de colocar a pagina no ar. -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════════════════
-   QUIZ — mesma identidade visual do site principal.
-   Paleta travada: #fcfef5 #e9ffe1 #cdcfb7 #d6e6c3 #fafbe3
-   Neutros profundos derivados da mesma família verde-musgo.
+   THAINAN MATOS — QUIZ DE AVALIACAO FACIAL
+   Mesma paleta e mesma tipografia do site: a pagina precisa parecer
+   a continuacao dele, nao um formulario de terceiro.
    ═══════════════════════════════════════════════════════════════ */
 :root{
   --porcelana:#fcfef5; --menta:#e9ffe1; --sage:#cdcfb7; --folha:#d6e6c3; --creme:#fafbe3;
   --tinta:#232719; --corpo:#454d3b; --sutil:#626b55; --profundo:#1b1f14;
-  --linha:rgba(35,39,25,.13);
+  --linha:rgba(35,39,25,.12);
   --serif:"Cormorant Garamond",Cormorant,Garamond,Georgia,serif;
   --sans:"Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-  --r:2px; --t:280ms cubic-bezier(.22,.61,.36,1);
+  --r:3px;
+  --e:cubic-bezier(.16,1,.3,1);
+  --t:.42s var(--e);
+  --sombra-s:0 2px 10px -6px rgba(35,39,25,.28);
+  --sombra-m:0 18px 44px -30px rgba(35,39,25,.45);
+  --sombra-g:0 36px 80px -48px rgba(35,39,25,.6);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100vh;display:flex;flex-direction:column;
-  background:radial-gradient(120% 70% at 84% 2%,var(--menta) 0%,transparent 58%),
-             radial-gradient(90% 60% at 4% 98%,var(--creme) 0%,transparent 62%),var(--porcelana);
-  color:var(--corpo);font-family:var(--sans);font-size:17px;font-weight:300;line-height:1.68;
-  letter-spacing:.008em;-webkit-font-smoothing:antialiased}
-h1,h2{font-family:var(--serif);color:var(--tinta);font-weight:300;line-height:1.1;
-  letter-spacing:-.012em;margin:0;text-wrap:balance}
-p{margin:0}
-a{color:inherit}
+body{margin:0;min-height:100svh;display:flex;flex-direction:column;
+  background:
+    radial-gradient(80% 55% at 82% 0%,var(--menta) 0%,transparent 62%),
+    radial-gradient(70% 50% at 4% 100%,var(--creme) 0%,transparent 60%),
+    var(--porcelana);
+  color:var(--corpo);font-family:var(--sans);font-size:17px;font-weight:300;
+  line-height:1.7;letter-spacing:.008em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;z-index:900;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{max-width:100%;display:block}
 ::selection{background:var(--folha);color:var(--tinta)}
+h1{font-family:var(--serif);color:var(--tinta);font-weight:300;margin:0;
+  font-size:clamp(1.85rem,4.6vw,2.75rem);line-height:1.1;letter-spacing:-.012em;text-wrap:balance}
 :focus-visible{outline:2px solid var(--tinta);outline-offset:3px;border-radius:var(--r)}
 
-.topo{padding:1.5rem 1.5rem 0;display:flex;justify-content:center}
-.marca{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:var(--tinta)}
-.marca__mono{width:38px;height:38px;flex:none}
-.marca__nome{font-family:var(--serif);font-size:.98rem;letter-spacing:.2em;
-  text-transform:uppercase;line-height:1.15;text-indent:.2em}
-.marca__sub{display:block;font-family:var(--sans);font-size:.54rem;letter-spacing:.28em;
-  color:var(--sutil);margin-top:3px;text-align:center;text-indent:.28em}
+/* ── BARRA DE PROGRESSO ────────────────────────────────────────── */
+.progresso{position:fixed;top:0;left:0;right:0;height:2px;z-index:40;background:var(--linha)}
+.progresso i{display:block;height:100%;width:0;background:var(--sutil);
+  transition:width .6s var(--e)}
 
-.palco{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem 1.5rem 3rem}
-.cartao{width:min(660px,100%);text-align:center}
+/* ── TOPO: voltar + contador ───────────────────────────────────── */
+.topo{position:sticky;top:0;z-index:30;display:flex;align-items:center;
+  justify-content:space-between;gap:1rem;height:74px;flex:none;
+  padding:0 clamp(1.15rem,4vw,2rem);
+  background:rgba(252,254,245,.72);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--linha)}
+.topo[hidden]{display:none}
+.voltar{display:inline-flex;align-items:center;gap:.6rem;background:none;border:0;
+  padding:.55rem .2rem;cursor:pointer;color:var(--tinta);font-family:var(--sans);
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  opacity:0;pointer-events:none;transition:opacity var(--t),transform var(--t)}
+.voltar.ver{opacity:1;pointer-events:auto}
+.voltar:hover{transform:translateX(-3px)}
+.voltar svg{width:15px;height:15px}
+.marca{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--tinta)}
+.marca svg{width:34px;height:34px;flex:none}
+.marca b{font-family:var(--serif);font-weight:400;font-size:.92rem;letter-spacing:.2em;
+  text-transform:uppercase;text-indent:.2em;white-space:nowrap}
+.conta{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sutil);
+  font-variant-numeric:tabular-nums}
 
-/* ── barra de progresso ── */
-.barra{width:min(420px,100%);margin:0 auto 2.4rem;display:none}
-.barra.ver{display:block}
-.barra__trilho{height:2px;background:var(--sage);border-radius:2px;overflow:hidden}
-.barra__cheio{height:100%;width:0;background:var(--tinta);transition:width 420ms cubic-bezier(.22,.61,.36,1)}
-.barra__conta{margin-top:.75rem;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sutil)}
+/* ── PALCO ─────────────────────────────────────────────────────── */
+.palco{flex:1;display:flex;align-items:center;justify-content:center;
+  padding:clamp(1.75rem,5vw,3.5rem) clamp(1.15rem,4vw,2rem) clamp(2.5rem,6vw,4rem)}
+.tela{width:min(620px,100%);opacity:1;transform:none;filter:none;
+  transition:opacity .38s var(--e),transform .38s var(--e),filter .38s var(--e)}
+.tela.saindo{opacity:0;transform:translateY(-14px);filter:blur(5px)}
+.tela.entrando{opacity:0;transform:translateY(20px);filter:blur(6px)}
+.rotulo{font-size:.68rem;font-weight:400;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--sutil);margin:0 0 1.1rem}
+.sub{margin:.95rem 0 0;font-size:.98rem;line-height:1.66;color:var(--corpo);max-width:46ch}
 
-.rotulo{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sutil);
-  margin-bottom:1.1rem}
-.retrato{width:132px;height:132px;border-radius:50%;overflow:hidden;margin:0 auto 1.6rem;
-  background:var(--folha);border:1px solid var(--linha)}
-.retrato img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
-h1{font-size:clamp(1.9rem,4.4vw,3rem)}
-h2{font-size:clamp(1.55rem,3.4vw,2.35rem)}
-.alt{display:block;color:var(--sutil)}
-.sub{margin-top:1.1rem;font-size:clamp(1rem,1.5vw,1.1rem);color:var(--corpo);
-  max-width:46ch;margin-inline:auto}
-.dica{margin-top:1.2rem;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sutil)}
+/* ── OPCOES ────────────────────────────────────────────────────── */
+.opcoes{display:grid;gap:.7rem;margin-top:clamp(1.75rem,4vw,2.4rem)}
+.opcao{position:relative;display:flex;align-items:center;gap:1rem;width:100%;
+  min-height:66px;padding:1rem 1.35rem;text-align:left;cursor:pointer;
+  font-family:var(--serif);font-size:clamp(1.08rem,2.2vw,1.25rem);line-height:1.28;
+  color:var(--tinta);background:rgba(252,254,245,.72);
+  border:1px solid var(--linha);border-radius:var(--r);
+  box-shadow:var(--sombra-s);isolation:isolate;overflow:hidden;
+  transition:border-color var(--t),transform var(--t),box-shadow var(--t)}
+.opcao::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--menta);
+  transform:translateX(-101%);transition:transform .5s var(--e)}
+.opcao:hover{border-color:var(--sage);transform:translateY(-2px);box-shadow:var(--sombra-m)}
+.opcao:hover::before{transform:none}
+.opcao__marca{flex:none;width:22px;height:22px;border-radius:50%;
+  border:1px solid var(--sage);display:grid;place-items:center;
+  transition:background var(--t),border-color var(--t)}
+.opcao__marca svg{width:11px;height:11px;color:var(--porcelana);
+  opacity:0;transform:scale(.5);transition:opacity var(--t),transform var(--t)}
+.opcao[aria-pressed="true"],.opcao[aria-checked="true"]{border-color:var(--tinta)}
+.opcao[aria-pressed="true"]::before,.opcao[aria-checked="true"]::before{transform:none;background:var(--folha)}
+.opcao[aria-pressed="true"] .opcao__marca,.opcao[aria-checked="true"] .opcao__marca{
+  background:var(--tinta);border-color:var(--tinta)}
+.opcao[aria-pressed="true"] .opcao__marca svg,.opcao[aria-checked="true"] .opcao__marca svg{
+  opacity:1;transform:none}
+.opcoes--multi .opcao__marca{border-radius:var(--r)}
 
-.btn{--bg:var(--tinta);--fg:var(--porcelana);
-  display:inline-flex;align-items:center;justify-content:center;gap:.7rem;
-  min-height:56px;padding:0 2.4rem;background:var(--bg);color:var(--fg);
-  font-family:var(--sans);font-size:.78rem;font-weight:400;letter-spacing:.2em;
+/* ── CAMPOS ────────────────────────────────────────────────────── */
+.campo{margin-top:clamp(1.75rem,4vw,2.4rem)}
+.campo__caixa{display:flex;align-items:center;gap:.85rem;
+  background:rgba(252,254,245,.8);border:1px solid var(--linha);border-radius:var(--r);
+  padding:0 1.3rem;min-height:70px;box-shadow:var(--sombra-s);
+  transition:border-color var(--t),box-shadow var(--t)}
+.campo__caixa:focus-within{border-color:var(--tinta);box-shadow:var(--sombra-m)}
+.campo__caixa .bandeira{font-size:1.15rem;line-height:1;flex:none}
+.campo input{flex:1;min-width:0;border:0;background:none;outline:none;
+  font-family:var(--serif);font-size:clamp(1.2rem,2.6vw,1.5rem);font-weight:400;
+  color:var(--tinta);padding:0;line-height:1.3}
+.campo input::placeholder{color:var(--sage)}
+.erro{display:none;margin:.75rem 0 0;font-size:.82rem;color:#8a3b2f;letter-spacing:.01em}
+.erro.ver{display:block}
+
+/* ── BOTOES ────────────────────────────────────────────────────── */
+.acoes{display:flex;flex-wrap:wrap;gap:.85rem;align-items:center;
+  margin-top:clamp(1.75rem,4vw,2.4rem)}
+.btn{--bg:var(--tinta);--fg:var(--porcelana);--fill:var(--profundo);
+  display:inline-flex;align-items:center;justify-content:center;gap:.75rem;
+  min-height:60px;padding:0 2.4rem;background:var(--bg);color:var(--fg);
+  font-family:var(--sans);font-size:.76rem;font-weight:400;letter-spacing:.22em;
   text-transform:uppercase;text-decoration:none;border:1px solid var(--bg);
-  border-radius:var(--r);cursor:pointer;transition:background var(--t)}
-.btn:hover{--bg:var(--profundo)}
-.btn svg{width:16px;height:16px;flex:none}
-.btn--zap{--bg:#25d366;--fg:#fff;border-color:#25d366}
-.btn--zap:hover{--bg:#1eb457;border-color:#1eb457}
+  border-radius:var(--r);cursor:pointer;position:relative;overflow:hidden;isolation:isolate;
+  transition:color var(--t),border-color var(--t),transform var(--t),box-shadow var(--t),opacity var(--t)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--fill);
+  transform:translateY(101%);transition:transform .5s var(--e)}
+.btn:hover:not(:disabled)::before,.btn:focus-visible::before{transform:none}
+.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--sombra-m)}
+.btn:disabled{opacity:.34;cursor:not-allowed}
+.btn svg{width:16px;height:16px;flex:none;transition:transform var(--t)}
+.btn:hover:not(:disabled) svg{transform:translateX(4px)}
+.btn--zap{--bg:#1f9d4d;--fg:#fff;--fill:#17853f;border-color:#1f9d4d}
+.btn--zap svg{width:20px;height:20px}
+.btn--zap:hover svg{transform:none}
+.acoes--centro{justify-content:center}
+.dica{margin:1.15rem 0 0;font-size:.74rem;letter-spacing:.02em;color:var(--sutil)}
 
-/* ── opções ── */
-.opcoes{display:grid;gap:.7rem;margin-top:2.2rem;text-align:left}
-.opcao{display:flex;align-items:center;gap:1rem;width:100%;
-  padding:1.15rem 1.4rem;background:rgba(252,254,245,.72);border:1px solid var(--linha);
-  border-radius:var(--r);cursor:pointer;font-family:var(--serif);
-  font-size:clamp(1.08rem,1.8vw,1.24rem);line-height:1.3;color:var(--tinta);text-align:left;
-  transition:background var(--t),border-color var(--t),transform var(--t)}
-.opcao:hover{background:var(--menta);border-color:var(--folha)}
-.opcao.sel{background:var(--folha);border-color:var(--tinta)}
-.opcao__marca{width:20px;height:20px;flex:none;border:1px solid var(--sage);border-radius:50%;
-  display:grid;place-items:center;transition:border-color var(--t),background var(--t)}
-.opcao.sel .opcao__marca{background:var(--tinta);border-color:var(--tinta)}
-.opcao__marca::after{content:"";width:7px;height:7px;border-radius:50%;background:transparent;transition:background var(--t)}
-.opcao.sel .opcao__marca::after{background:var(--porcelana)}
+/* ── ABERTURA ──────────────────────────────────────────────────── */
+.abertura{text-align:center;display:grid;justify-items:center}
+/* retrato circular: halo de luz, dois filetes concentricos e um facho
+   que corre pelo aro, como reflexo num anel polido. Tudo em tom da
+   paleta — o efeito tem que ser lido como acabamento, nao como
+   animacao chamando atencao.                                       */
+.retrato{position:relative;width:clamp(168px,38vw,224px);aspect-ratio:1;
+  margin-bottom:clamp(1.9rem,4.5vw,2.6rem);
+  animation:sobe 1.1s var(--e) both, respira 7s 1.1s ease-in-out infinite alternate}
+.retrato>*{position:absolute;border-radius:50%}
+.retrato__halo{inset:-26%;z-index:0;
+  background:radial-gradient(circle,var(--menta) 0%,rgba(214,230,195,.55) 34%,rgba(233,255,225,0) 66%);
+  opacity:.9;animation:pulsa 6s 1.2s ease-in-out infinite alternate}
+.retrato__aro{inset:-15px;z-index:1;border:1px solid rgba(35,39,25,.14)}
+/* segundo filete, quase invisivel: e ele que da a profundidade */
+.retrato__aro::after{content:"";position:absolute;inset:-13px;border-radius:50%;
+  border:1px solid rgba(35,39,25,.06)}
+/* facho difuso — mascara com borda macia, sem blur (blur seria cortado
+   pela propria mascara e o brilho sumiria) */
+.retrato__brilho{inset:-15px;z-index:2;
+  background:conic-gradient(from 0deg,transparent 0deg,rgba(98,107,85,.34) 46deg,
+             transparent 104deg,transparent 360deg);
+  -webkit-mask:radial-gradient(closest-side,transparent calc(100% - 11px),
+    rgba(0,0,0,.65) calc(100% - 6px),#000 calc(100% - 2px),transparent 100%);
+          mask:radial-gradient(closest-side,transparent calc(100% - 11px),
+    rgba(0,0,0,.65) calc(100% - 6px),#000 calc(100% - 2px),transparent 100%);
+  animation:gira 9s linear infinite}
+/* facho nitido, sobre o filete */
+.retrato__anel{inset:-15px;z-index:3;
+  background:conic-gradient(from 0deg,transparent 0deg,rgba(35,39,25,.6) 44deg,
+             rgba(98,107,85,.18) 82deg,transparent 108deg,transparent 360deg);
+  -webkit-mask:radial-gradient(closest-side,transparent calc(100% - 2px),#000 calc(100% - 2px));
+          mask:radial-gradient(closest-side,transparent calc(100% - 2px),#000 calc(100% - 2px));
+  animation:gira 9s linear infinite}
+.retrato__moldura{inset:0;z-index:4;overflow:hidden;background:var(--folha);
+  box-shadow:0 34px 70px -30px rgba(35,39,25,.62),0 8px 22px -12px rgba(35,39,25,.34),
+             inset 0 0 0 1px rgba(252,254,245,.55)}
+.retrato__moldura img{width:100%;height:100%;object-fit:cover;object-position:50% 10%}
+/* lustro que atravessa o retrato uma unica vez, logo na entrada */
+.retrato__moldura::after{content:"";position:absolute;inset:-30%;pointer-events:none;
+  background:linear-gradient(72deg,transparent 38%,rgba(255,255,255,.4) 50%,transparent 62%);
+  transform:translateX(-120%);animation:lustro 1.9s 1s var(--e) both}
+@keyframes gira{to{transform:rotate(360deg)}}
+@keyframes respira{to{transform:translateY(-7px)}}
+@keyframes pulsa{to{opacity:.52;transform:scale(1.07)}}
+@keyframes lustro{to{transform:translateX(120%)}}
+@keyframes sobe{from{opacity:0;transform:translateY(20px) scale(.9);filter:blur(8px)}
+                to{opacity:1;transform:none;filter:none}}
+.abertura h1{max-width:22ch}
+/* a especialidade e a cidade vem sob o nome, separadas por um filete */
+.abertura .rotulo{margin:1.15rem 0 0;padding-top:1.15rem;position:relative}
+.abertura .rotulo::before{content:"";position:absolute;top:0;left:50%;
+  transform:translateX(-50%);width:34px;height:1px;background:var(--sage)}
+.abertura .sub{margin:1.7rem auto 0;text-align:center;max-width:44ch}
+.abertura .acoes{justify-content:center}
+.abertura .dica{text-align:center}
 
-.voltar{margin-top:1.8rem;background:none;border:0;cursor:pointer;color:var(--sutil);
-  font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
-  padding:.6rem;display:none;transition:color var(--t)}
-.voltar.ver{display:inline-block}
-.voltar:hover{color:var(--tinta)}
-
-/* ── resumo final ── */
-.resumo{margin:2rem auto 0;max-width:440px;text-align:left;
-  border-top:1px solid var(--linha)}
-.resumo div{display:flex;justify-content:space-between;gap:1.2rem;align-items:baseline;
-  padding:.8rem 0;border-bottom:1px solid var(--linha);font-size:.86rem}
-.resumo dt{color:var(--sutil);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;flex:none}
-.resumo dd{margin:0;color:var(--tinta);text-align:right;font-family:var(--serif);font-size:1.02rem}
-
-.rodape{padding:0 1.5rem 2rem;text-align:center;font-size:.72rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--sutil)}
-.rodape a{text-decoration:none;border-bottom:1px solid var(--sage);padding-bottom:2px}
-
-.tela{display:none}
-.tela.ativa{display:block;animation:entra 420ms cubic-bezier(.22,.61,.36,1)}
-@keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* ── FECHO ─────────────────────────────────────────────────────── */
+/* cabecalho do fecho centralizado; o resumo continua alinhado a
+   esquerda, que e como se le uma lista de campos                  */
+.fecho__cab{display:grid;justify-items:center;text-align:center}
+.fecho__cab h1{max-width:22ch}
+.fecho__cab .sub{margin-inline:auto;max-width:42ch}
+.selo{width:58px;height:58px;border-radius:50%;background:var(--folha);
+  display:grid;place-items:center;margin-bottom:1.4rem;color:var(--tinta);
+  animation:brota .7s var(--e) both}
+.selo svg{width:24px;height:24px}
+@keyframes brota{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+.resumo{margin-top:clamp(1.6rem,4vw,2.2rem);border:1px solid var(--linha);
+  border-radius:var(--r);background:rgba(252,254,245,.7);padding:1.4rem 1.5rem;
+  box-shadow:var(--sombra-s)}
+.resumo dl{margin:0;display:grid;gap:.9rem}
+.resumo div{display:grid;gap:.2rem}
+.resumo dt{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sutil)}
+.resumo dd{margin:0;font-family:var(--serif);font-size:1.1rem;line-height:1.32;color:var(--tinta)}
+.nota-valor{margin-top:1.3rem;padding-top:1.2rem;border-top:1px solid var(--linha);
+  font-size:.82rem;line-height:1.65;color:var(--sutil)}
 
 @media (max-width:560px){
   body{font-size:16px}
-  .palco{padding:1.5rem 1.2rem 2.5rem}
-  .btn{width:100%}
-  .retrato{width:104px;height:104px}
-  .resumo dd{font-size:.95rem}
+  .topo{height:66px}
+  .marca b{display:none}
+  .acoes .btn{width:100%}
+  .opcao{min-height:62px;padding:.9rem 1.15rem}
+  .retrato{width:min(200px,58vw)}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .tela.saindo,.tela.entrando{opacity:1;transform:none;filter:none}
+  .retrato{animation:none}
+  .retrato__anel,.retrato__brilho,.retrato__halo,.retrato__moldura::after{animation:none}
+  .retrato__moldura::after{display:none}
+  .retrato__anel,.retrato__brilho{background:none}
 }
 </style>
 </head>
 <body>
 
-<header class="topo">
-  <a class="marca" href="index.html" aria-label="Thainan Matos — voltar ao site">
-    <svg class="marca__mono" viewBox="0 0 200 200" aria-hidden="true">
+<div class="progresso" aria-hidden="true"><i id="barra"></i></div>
+
+<header class="topo" id="topo" hidden>
+  <button class="voltar" id="voltar" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    Voltar
+  </button>
+  <span class="marca" aria-hidden="true">
+    <svg viewBox="0 0 200 200">
       <g fill="currentColor" text-anchor="middle" font-family="Cormorant Garamond, Garamond, Georgia, serif" font-weight="400">
         <text x="100" y="150" font-size="142" letter-spacing="-3">M</text>
         <text x="100" y="150" font-size="168">T</text>
       </g>
     </svg>
-    <span class="marca__nome">Thainan Matos<span class="marca__sub">Harmonização Facial</span></span>
-  </a>
+    <b>Thainan Matos</b>
+  </span>
+  <span class="conta" id="conta">1 / 6</span>
 </header>
 
 <main class="palco">
-  <div class="cartao">
-
-    <div class="barra" id="barra">
-      <div class="barra__trilho"><div class="barra__cheio" id="barraCheio"></div></div>
-      <p class="barra__conta" id="barraConta">Pergunta 1 de 7</p>
-    </div>
-
-    <!-- ── abertura ── -->
-    <section class="tela ativa" id="telaInicio">
-      <div class="retrato"><img src="img/retrato-hero.jpg" alt="Thainan Matos"></div>
-      <p class="rotulo">Código da Juventude · Avaliação</p>
-      <h1><span class="alt">Antes de tocar no rosto,</span>eu preciso lê-lo.</h1>
-      <p class="sub">Sete perguntas rápidas para eu entender o que está acontecendo com o seu rosto antes da gente conversar.</p>
-      <div style="margin-top:2.2rem">
-        <button class="btn" id="btnComecar" type="button">Começar
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </div>
-      <p class="dica">Leva menos de um minuto</p>
-    </section>
-
-    <!-- ── perguntas (montadas pelo script) ── -->
-    <section class="tela" id="telaPergunta" aria-live="polite">
-      <h2 id="enunciado"></h2>
-      <div class="opcoes" id="opcoes"></div>
-      <button class="voltar" id="btnVoltar" type="button">← Voltar</button>
-    </section>
-
-    <!-- ── fecho ── -->
-    <section class="tela" id="telaFim">
-      <p class="rotulo">Tudo certo</p>
-      <h2><span class="alt">Já sei por onde</span>começar a sua leitura.</h2>
-      <p class="sub">Suas respostas vão junto na mensagem. Assim eu chego na conversa já sabendo o que olhar — e você não precisa repetir nada.</p>
-      <dl class="resumo" id="resumo"></dl>
-      <div style="margin-top:2.2rem">
-        <a class="btn btn--zap" id="btnZap" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2a.5.5 0 0 0 0-.4c0-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.4a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1A4.9 4.9 0 0 0 8.3 15a11 11 0 0 0 4.2 3.3 4.7 4.7 0 0 0 2.9.4 2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.2-.2-.3-.4-.4Z"/></svg>
-          Enviar para a Thainan
-        </a>
-      </div>
-      <button class="voltar ver" id="btnRefazer" type="button">← Refazer</button>
-    </section>
-
-  </div>
+  <div class="tela" id="tela" aria-live="polite"></div>
 </main>
-
-<footer class="rodape"><a href="index.html">Voltar ao site</a></footer>
 
 <script>
 (function(){
-  var ZAP = '5573981046695';
+"use strict";
 
-  /* Sete perguntas calibradas no método dela: primeiro a queixa, depois a
-     sensação, o histórico e o medo — e só no fim praça e urgência, que são
-     os dois dados operacionais de quem vai atender.                        */
-  var PERGUNTAS = [
-    { chave:'Queixa', texto:'O que mais te incomoda quando você se olha de perfil?', ops:[
-      'O contorno do rosto, que perdeu definição',
-      'A bochecha e o terço médio, que parecem ter escorregado',
-      'O queixo e o lábio — sinto que o perfil não fecha',
-      'A pele: textura, viço, linhas finas',
-      'Não sei apontar. Só sei que mudou' ]},
-    { chave:'Sensação', texto:'Se tivesse que descrever seu rosto hoje em uma frase, qual seria?', ops:[
-      'Parece cansado mesmo quando eu durmo bem',
-      'Ficou mais pesado na parte de baixo',
-      'Continua bonito, mas perdeu definição',
-      'Está envelhecendo mais rápido do que eu' ]},
-    { chave:'Histórico', texto:'Você já fez algum procedimento facial?', ops:[
-      'Nunca fiz nada',
-      'Já fiz toxina botulínica',
-      'Já fiz preenchimento',
-      'Já fiz vários e quero reorganizar' ]},
-    { chave:'Receio', texto:'O que mais te segura na hora de decidir?', ops:[
-      'Ficar com o rosto artificial',
-      'Não me reconhecer depois',
-      'Exagerar sem perceber',
-      'Investir e não ver diferença',
-      'Nada me segura, só quero começar certo' ]},
-    { chave:'Idade', texto:'Qual a sua faixa de idade?', ops:[
-      'Até 29 anos','30 a 39 anos','40 a 49 anos','50 anos ou mais' ]},
-    { chave:'Praça', texto:'Onde você prefere ser atendida?', ops:[
-      'Itabuna — BA','São Paulo — SP','Tanto faz, me oriente' ]},
-    { chave:'Prazo', texto:'Quando você gostaria de começar?', ops:[
-      'O quanto antes','Nos próximos 30 dias','Ainda estou me informando' ]}
+/* ══════════ AJUSTES RAPIDOS ══════════
+   Tudo o que muda de cliente para cliente esta aqui em cima.        */
+var WHATSAPP   = "5573981046695";           // numero que recebe as respostas
+var PROFISSIONAL = "Dra. Thainan Matos";
+var LOCAL      = "Harmonização Facial · Itabuna - BA";
+var RETRATO    = "img/retrato-hero.jpg";    // retrato da abertura
+/* Valor da avaliacao: escreva o texto ou deixe "" para nao exibir. */
+var NOTA_VALOR = "Valor da avaliação: R$ [VALOR]. A avaliação inclui análise facial detalhada e a definição do seu plano de tratamento, e é um serviço independente do procedimento.";
+
+var lento = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ══════════ ESTADO ══════════ */
+var dados = {motivo:null, nome:"", idade:null, incomodos:[], prazo:null, telefone:""};
+var passo = -1;            // -1 = abertura
+var timer = null;
+
+/* ══════════ PERGUNTAS ══════════ */
+function perguntas(){
+  var n = dados.nome ? dados.nome + ", " : "";
+  function maiuscula(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
+  return [
+    { tipo:"unica", chave:"motivo",
+      rotulo:"Primeira pergunta",
+      titulo:"O que te trouxe até aqui?",
+      opcoes:[
+        "Rejuvenescimento natural e preventivo",
+        "Melhorar resultados de procedimentos anteriores",
+        "Ainda estou pesquisando"
+      ]},
+    { tipo:"texto", chave:"nome",
+      rotulo:"Para te chamar pelo nome",
+      titulo:"Qual o seu primeiro nome?",
+      exemplo:"Primeiro nome" },
+    { tipo:"unica", chave:"idade",
+      rotulo:"Faixa etária",
+      titulo: maiuscula(n + "qual a sua faixa etária?"),
+      opcoes:["18 a 29 anos","30 a 39 anos","40 a 49 anos","50 anos ou mais"]},
+    { tipo:"varias", chave:"incomodos",
+      rotulo:"O seu rosto hoje",
+      titulo: maiuscula(n + "o que mais te incomoda no seu rosto hoje?"),
+      sub:"Você pode marcar mais de uma opção.",
+      opcoes:[
+        "Flacidez e perda de contorno",
+        "Rugas e linhas de expressão",
+        "Bigode chinês e papada",
+        "Olheiras e região dos olhos",
+        "Manchas e textura da pele",
+        "Lábios e região perioral",
+        "Quero uma avaliação geral"
+      ]},
+    { tipo:"unica", chave:"prazo",
+      rotulo:"Momento",
+      titulo: maiuscula(n + "quando pretende iniciar o tratamento?"),
+      opcoes:["Nas próximas semanas","Nos próximos meses","Ainda não decidi"]},
+    { tipo:"telefone", chave:"telefone",
+      rotulo:"Último passo",
+      titulo:"Avaliação com " + PROFISSIONAL,
+      sub:"Deixe o seu WhatsApp para o consultório retornar caso a conversa se perca." }
   ];
+}
+var TOTAL = perguntas().length;
 
-  var i = 0, respostas = [];
-  var telas = {inicio:byId('telaInicio'), pergunta:byId('telaPergunta'), fim:byId('telaFim')};
-  var lento = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function byId(x){return document.getElementById(x)}
+/* ══════════ DESENHO DA TELA ══════════ */
+var tela   = document.getElementById("tela"),
+    topo   = document.getElementById("topo"),
+    conta  = document.getElementById("conta"),
+    barra  = document.getElementById("barra"),
+    btnVoltar = document.getElementById("voltar");
 
-  function mostrar(nome){
-    for(var k in telas) telas[k].classList.toggle('ativa', k===nome);
-    byId('barra').classList.toggle('ver', nome==='pergunta');
-    window.scrollTo({top:0,behavior:lento?'auto':'smooth'});
-  }
+function icone(nome){
+  var d = {
+    check:'<path d="M4 12.5l5 5L20 6.5"/>',
+    seta :'<path d="M4 12h15M13 6l6 6-6 6"/>'
+  }[nome];
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '+
+         'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+d+'</svg>';
+}
+function zapIcone(){
+  return '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5s-.6-1.4-.8-1.9-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 6.9 12a5 5 0 0 0 1 2.3 11.4 11.4 0 0 0 4.4 3.9c1.6.6 2.2.7 3 .6a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>';
+}
+function escapa(t){
+  return String(t).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];
+  });
+}
 
-  function pinta(){
-    var p = PERGUNTAS[i];
-    byId('enunciado').textContent = p.texto;
-    byId('barraCheio').style.width = ((i+1)/PERGUNTAS.length*100).toFixed(1)+'%';
-    byId('barraConta').textContent = 'Pergunta '+(i+1)+' de '+PERGUNTAS.length;
-    byId('btnVoltar').classList.toggle('ver', i>0);
+function trocar(monta){
+  if(lento){ tela.innerHTML=""; monta(); return; }
+  tela.classList.add("saindo");
+  setTimeout(function(){
+    tela.innerHTML="";
+    monta();
+    tela.classList.remove("saindo");
+    tela.classList.add("entrando");
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ tela.classList.remove("entrando"); });
+    });
+  }, 190);
+}
 
-    var caixa = byId('opcoes'); caixa.innerHTML='';
-    p.ops.forEach(function(txt){
-      var b = document.createElement('button');
-      b.type='button'; b.className='opcao';
-      b.innerHTML='<span class="opcao__marca" aria-hidden="true"></span><span>'+txt+'</span>';
-      if(respostas[i]===txt) b.classList.add('sel');
-      b.addEventListener('click', function(){
-        caixa.querySelectorAll('.opcao').forEach(function(o){o.classList.remove('sel')});
-        b.classList.add('sel');
-        respostas[i]=txt;
-        setTimeout(avanca, lento?0:260);   // deixa a seleção ser vista antes de virar
-      });
+function desenhar(){
+  limparTimer();
+  if(passo < 0){ trocar(abertura); return; }
+  if(passo >= TOTAL){ trocar(fecho); return; }
+  trocar(function(){ pergunta(perguntas()[passo]); });
+}
+
+function atualizarTopo(){
+  var naAbertura = passo < 0;
+  topo.hidden = naAbertura;
+  btnVoltar.classList.toggle("ver", passo >= 0);
+  if(naAbertura){ barra.style.width = "0"; return; }
+  var n = Math.min(passo + 1, TOTAL);
+  conta.textContent = (passo >= TOTAL ? TOTAL : n) + " / " + TOTAL;
+  barra.style.width = ((passo >= TOTAL ? TOTAL : n) / TOTAL * 100) + "%";
+}
+
+/* ══════════ ABERTURA ══════════ */
+function abertura(){
+  atualizarTopo();
+  var d = document.createElement("div");
+  d.className = "abertura";
+  d.innerHTML =
+    '<div class="retrato">' +
+      '<span class="retrato__halo" aria-hidden="true"></span>' +
+      '<span class="retrato__aro" aria-hidden="true"></span>' +
+      '<span class="retrato__brilho" aria-hidden="true"></span>' +
+      '<span class="retrato__anel" aria-hidden="true"></span>' +
+      '<span class="retrato__moldura"><img src="' + RETRATO + '" alt="' + escapa(PROFISSIONAL) + '" fetchpriority="high"></span>' +
+    '</div>' +
+    '<h1>' + escapa(PROFISSIONAL) + '</h1>' +
+    '<p class="rotulo">' + escapa(LOCAL) + '</p>' +
+    '<p class="sub">Agende a sua avaliação. Responda algumas perguntas rápidas e organizamos o seu atendimento.</p>' +
+    '<div class="acoes"><button class="btn" type="button" id="comecar">Começar' + icone("seta") + '</button></div>' +
+    '<p class="dica">Leva menos de 1 minuto.</p>';
+  tela.appendChild(d);
+  document.getElementById("comecar").onclick = function(){ passo = 0; desenhar(); };
+}
+
+/* ══════════ PERGUNTA ══════════ */
+function pergunta(p){
+  atualizarTopo();
+  var cab = document.createElement("div");
+  cab.innerHTML =
+    '<p class="rotulo">' + escapa(p.rotulo) + '</p>' +
+    '<h1>' + escapa(p.titulo) + '</h1>' +
+    (p.sub ? '<p class="sub">' + escapa(p.sub) + '</p>' : "");
+  tela.appendChild(cab);
+
+  if(p.tipo === "unica" || p.tipo === "varias"){
+    var varias = p.tipo === "varias";
+    var caixa = document.createElement("div");
+    caixa.className = "opcoes" + (varias ? " opcoes--multi" : "");
+    caixa.setAttribute("role", varias ? "group" : "radiogroup");
+    p.opcoes.forEach(function(opt){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "opcao";
+      var marcado = varias ? dados[p.chave].indexOf(opt) > -1 : dados[p.chave] === opt;
+      b.setAttribute(varias ? "aria-pressed" : "aria-checked", marcado ? "true" : "false");
+      if(!varias) b.setAttribute("role","radio");
+      b.innerHTML = '<span class="opcao__marca">' + icone("check") + '</span><span>' + escapa(opt) + '</span>';
+      b.onclick = function(){
+        if(varias){
+          var i = dados[p.chave].indexOf(opt);
+          if(i > -1) dados[p.chave].splice(i,1); else dados[p.chave].push(opt);
+          b.setAttribute("aria-pressed", dados[p.chave].indexOf(opt) > -1 ? "true" : "false");
+          /* cada toque reinicia a contagem: da tempo de marcar varias
+             opcoes antes de a tela virar sozinha */
+          if(dados[p.chave].length) agendar(lento ? 0 : 1500); else limparTimer();
+        }else{
+          dados[p.chave] = opt;
+          caixa.querySelectorAll(".opcao").forEach(function(o){ o.setAttribute("aria-checked","false"); });
+          b.setAttribute("aria-checked","true");
+          /* a pausa existe so para a marcacao ser vista antes de virar */
+          agendar(lento ? 0 : 320);
+        }
+      };
       caixa.appendChild(b);
     });
+    tela.appendChild(caixa);
+
+    if(varias) tela.appendChild(dica("Marque quantas quiser — seguimos sozinhos em seguida."));
   }
 
-  function avanca(){
-    if(i < PERGUNTAS.length-1){ i++; pinta(); }
-    else fecha();
+  if(p.tipo === "texto"){
+    var campo = document.createElement("div");
+    campo.className = "campo";
+    campo.innerHTML = '<div class="campo__caixa"><input type="text" id="entrada" autocomplete="given-name" ' +
+                      'placeholder="' + escapa(p.exemplo) + '" value="' + escapa(dados[p.chave]) + '"></div>';
+    tela.appendChild(campo);
+    tela.appendChild(dica("Aperte Enter quando terminar."));
+    var inp = document.getElementById("entrada");
+    inp.oninput = function(){
+      dados[p.chave] = inp.value;
+      if(inp.value.trim()) agendar(lento ? 0 : 1300); else limparTimer();
+    };
+    inp.onkeydown = function(e){ if(e.key === "Enter" && inp.value.trim()) avancar(); };
+    setTimeout(function(){ inp.focus(); }, 60);
   }
 
-  function fecha(){
-    var dl = byId('resumo'); dl.innerHTML='';
-    PERGUNTAS.forEach(function(p,n){
-      var d=document.createElement('div');
-      d.innerHTML='<dt>'+p.chave+'</dt><dd>'+(respostas[n]||'—')+'</dd>';
-      dl.appendChild(d);
-    });
-    var linhas = PERGUNTAS.map(function(p,n){ return p.chave+': '+(respostas[n]||'—'); });
-    var msg = 'Olá! Vim do seu site e respondi a avaliação.\n\n'+linhas.join('\n')+
-              '\n\nGostaria de agendar minha avaliação.';
-    byId('btnZap').href='https://wa.me/'+ZAP+'?text='+encodeURIComponent(msg);
-    mostrar('fim');
+  if(p.tipo === "telefone"){
+    var campoT = document.createElement("div");
+    campoT.className = "campo";
+    campoT.innerHTML =
+      '<div class="campo__caixa"><span class="bandeira" aria-hidden="true">🇧🇷</span>' +
+      '<input type="tel" id="entrada" inputmode="numeric" autocomplete="tel-national" ' +
+      'placeholder="(73) 98104-6695" value="' + escapa(dados[p.chave]) + '"></div>' +
+      '<p class="erro" id="erro"></p>';
+    tela.appendChild(campoT);
+    tela.appendChild(dica("Aperte Enter quando terminar."));
+    var tel = document.getElementById("entrada");
+    tel.oninput = function(){
+      var pos = tel.selectionStart === tel.value.length;
+      tel.value = mascara(tel.value);
+      if(pos) tel.setSelectionRange(tel.value.length, tel.value.length);
+      dados[p.chave] = tel.value;
+      document.getElementById("erro").classList.remove("ver");
+      /* espera o numero fechar: com 10 digitos um celular ainda esta
+         pela metade, e avancar ali cortaria o ultimo digito */
+      if(telefoneCompleto(tel.value)) agendar(lento ? 0 : 900); else limparTimer();
+    };
+    tel.onkeydown = function(e){ if(e.key === "Enter") avancar(); };
+    setTimeout(function(){ tel.focus(); }, 60);
   }
+}
 
-  byId('btnComecar').addEventListener('click', function(){ i=0; pinta(); mostrar('pergunta'); });
-  byId('btnVoltar').addEventListener('click', function(){ if(i>0){ i--; pinta(); } });
-  byId('btnRefazer').addEventListener('click', function(){ i=0; respostas=[]; mostrar('inicio'); });
+function dica(texto){
+  var p = document.createElement("p");
+  p.className = "dica";
+  p.textContent = texto;
+  return p;
+}
 
-  // se o retrato nao existir, o circulo fica so com a cor da paleta
-  var r=document.querySelector('.retrato img');
-  r.addEventListener('error', function(){ r.remove(); });
+/* ══════════ TELEFONE ══════════ */
+var DDDS = [11,12,13,14,15,16,17,18,19,21,22,24,27,28,31,32,33,34,35,37,38,
+            41,42,43,44,45,46,47,48,49,51,53,54,55,61,62,63,64,65,66,67,68,69,
+            71,73,74,75,77,79,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,98,99];
+function telefoneOk(v){
+  var d = String(v).replace(/\D/g,"");
+  if(d.length < 10 || d.length > 11) return {ok:false, por:"tamanho"};
+  if(DDDS.indexOf(parseInt(d.substring(0,2),10)) === -1) return {ok:false, por:"ddd"};
+  return {ok:true};
+}
+function telefoneCompleto(v){
+  if(!telefoneOk(v).ok) return false;
+  var d = String(v).replace(/\D/g,"");
+  return d.length === 11 || d.charAt(2) !== "9";   // fixo nunca comeca com 9
+}
+function mascara(v){
+  var d = String(v).replace(/\D/g,"").slice(0,11);
+  if(!d) return "";
+  if(d.length <= 2) return "(" + d;
+  var corte = d.length > 10 ? 7 : 6;
+  if(d.length <= corte) return "(" + d.slice(0,2) + ") " + d.slice(2);
+  return "(" + d.slice(0,2) + ") " + d.slice(2,corte) + "-" + d.slice(corte);
+}
+
+/* ══════════ NAVEGACAO ══════════ */
+function limparTimer(){ if(timer){ clearTimeout(timer); timer = null; } }
+function agendar(ms){
+  limparTimer();
+  var aqui = passo;
+  timer = setTimeout(function(){ if(passo === aqui) avancar(); }, ms);
+}
+function avancar(){
+  var p = perguntas()[passo];
+  if(p){
+    if(p.tipo === "texto"   && !dados[p.chave].trim()) return;
+    if(p.tipo === "varias"  && !dados[p.chave].length) return;
+    if(p.tipo === "telefone"){
+      var c = telefoneOk(dados[p.chave]);
+      if(!c.ok){
+        var e = document.getElementById("erro");
+        e.textContent = c.por === "ddd"
+          ? "Esse DDD não existe. Confira o número."
+          : "Digite o número completo, com DDD.";
+        e.classList.add("ver");
+        return;
+      }
+    }
+  }
+  passo++;
+  desenhar();
+}
+btnVoltar.onclick = function(){ if(passo > -1){ passo--; desenhar(); } };
+
+/* ══════════ FECHO ══════════ */
+function fecho(){
+  atualizarTopo();
+  var linhas = [
+    ["Nome", dados.nome || "—"],
+    ["O que te trouxe até aqui", dados.motivo || "—"],
+    ["Faixa etária", dados.idade || "—"],
+    ["O que mais incomoda", dados.incomodos.length ? dados.incomodos.join(" · ") : "—"],
+    ["Quando pretende iniciar", dados.prazo || "—"],
+    ["WhatsApp", dados.telefone || "—"]
+  ];
+  var html =
+    '<div class="fecho__cab">' +
+      '<div class="selo">' + icone("check") + '</div>' +
+      '<p class="rotulo">Tudo pronto' + (dados.nome ? ", " + escapa(dados.nome) : "") + '</p>' +
+      '<h1>Tudo pronto! Agora é só enviar a mensagem</h1>' +
+      '<p class="sub">O botão abre o WhatsApp com as suas respostas já escritas. É só apertar enviar.</p>' +
+    '</div>' +
+    '<div class="resumo"><dl>' +
+      linhas.map(function(l){
+        return '<div><dt>' + escapa(l[0]) + '</dt><dd>' + escapa(l[1]) + '</dd></div>';
+      }).join("") +
+    '</dl>' + (NOTA_VALOR ? '<p class="nota-valor">' + escapa(NOTA_VALOR) + '</p>' : "") + '</div>' +
+    '<div class="acoes acoes--centro">' +
+      '<button class="btn btn--zap" type="button" id="enviar">' + zapIcone() + 'Agendar no WhatsApp</button>' +
+    '</div>';
+  var d = document.createElement("div");
+  d.innerHTML = html;
+  while(d.firstChild) tela.appendChild(d.firstChild);
+  document.getElementById("enviar").onclick = abrirWhatsApp;
+}
+
+function abrirWhatsApp(){
+  var msg =
+    "Olá! Fiz a avaliação facial no site da " + PROFISSIONAL + " e quero agendar. Seguem minhas respostas:\n\n" +
+    "*Nome:* " + (dados.nome || "—") + "\n" +
+    "*O que me trouxe até aqui:* " + (dados.motivo || "—") + "\n" +
+    "*Faixa etária:* " + (dados.idade || "—") + "\n" +
+    "*O que mais me incomoda:* " + (dados.incomodos.length ? dados.incomodos.join(", ") : "—") + "\n" +
+    "*Quando pretendo iniciar:* " + (dados.prazo || "—") + "\n" +
+    "*Meu WhatsApp:* " + (dados.telefone || "—");
+  window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+}
+
+/* ══════════ INICIO ══════════ */
+desenhar();
 })();
 </script>
 </body>
